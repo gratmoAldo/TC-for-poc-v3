@@ -1,0 +1,78 @@
+<% title "Tag" %>
+<div class='first-pane'>
+
+<p>
+  <strong>ID:</strong>
+  <%=h @tag.id %>
+</p>
+<p>
+  <strong>Namespace:</strong>
+  <%=h @tag.namespace %>
+</p>
+<p>
+  <strong>Key:</strong>
+  <%=h @tag.key %>
+</p>
+<p>
+  <strong>Value:</strong>
+  <%=h @tag.value %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @tag.name %>
+</p>
+<p>
+  <strong>Display Name:</strong>
+  <%=h @tag.display_name %>
+</p>
+<p>
+  <strong>Creator:</strong>
+  <%=h @tag.creator_id %>
+</p>
+<p>
+  <strong>Is Reviewed:</strong>
+  <%=h @tag.is_reviewed %>
+</p>
+<p>
+  <strong>Reviewer:</strong>
+  <%=h @tag.reviewer_id %>
+</p>
+<p>
+  <strong>Reviewed At:</strong>
+  <%=h @tag.reviewed_at %>
+</p>
+<p>
+  <strong>Is Approved:</strong>
+  <%=h @tag.is_approved %>
+</p>
+<p>
+  <strong>Bookmarks:</strong>
+<ul><% @bookmarks.each do |bookmark| %>
+<li><%= link_to "#{bookmark.asset.xid}: #{bookmark.title} (#{bookmark.user.fullname})", asset_path(bookmark.asset) %></li>
+<% end %>
+</ul>
+</p>
+<p>
+	<strong>User Tag Cloud</strong>
+	<small>
+	<% for tag in @user_tag_cloud %>
+	<% t = Tag.find_by_id(tag[0]) %>
+	<%= link_to t.name, tag_path(t) %> (<%= tag[1] %>)
+	<% end %>
+</small>
+</p>
+<p>
+	<strong>Machine Tag Cloud</strong>
+	<small>
+	<% for tag in @machine_tag_cloud %>
+	<% t = Tag.find_by_id(tag[0]) %>
+	<%= link_to t.name, tag_path(t) %> (<%= tag[1] %>)
+	<% end %>
+</small>
+</p>
+	<p>
+  <%= link_to "Edit", edit_tag_path(@tag) %> |
+  <%= link_to "Destroy", @tag, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", tags_path %>
+</p>
+</div>

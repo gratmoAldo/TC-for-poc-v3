@@ -1,0 +1,95 @@
+<% title "SR #{@service_request.sr_number} - #{@service_request.title}" %>
+<% in_page_title "Service Request Management ##{@service_request.sr_number}" %>
+
+	<div class='table-header'>Summary</div>
+	<div class="container">
+		<ul>
+			<li class='cell'>
+				<div class='col1'><%= image_tag @service_request.severity_image %><%= image_tag @service_request.escalation_image %></div>
+				<div class='col2'><p><%=h @service_request.title %></p></div>
+				<div class="clear"></div>
+			</li>
+			<% content_tag_for :li, @service_request, :class=>"cell text closed", :onclick=>'toggle(this)', :style=>"background-image: url('../images/sr/caret_right.png');" do %>	
+				<div class='col1'>Description</div>
+				<div class='col2'><% content_tag_for :div, @service_request, :closed, :class=>'tapit', :style=>'display: block;' do %><%= truncate format_comment(h @service_request.clean_description), 88 %><% end %>
+				<% content_tag_for :div, @service_request, :open, :class=>'tapit hidden' do %><%= format_comment(h @service_request.description) %><% end %>
+				</div>
+				<div class="clear"></div>
+			</li>
+			<% end %>
+			<li class='cell'>
+				<div class='col1'>Status</div>
+				<div class='col2'><p><%=h @service_request.status %></p></div>
+				<div class="clear"></div>
+			</li>
+			<li class='cell'>
+				<div class='col1'>Created On</div>
+				<div class='col2'><p><%=simple_date @service_request.created_at  %></p></div>
+				<div class="clear"></div>
+			</li>
+			<li class='cell'>
+				<div class='col1'>Next Action</div>
+				<div class='col2'><p><%=simple_date @service_request.next_action_at  %></p></div>
+				<div class="clear"></div>
+			</li>
+			<li class='cell'>
+				<div class='col1'>Product</div>
+				<div class='col2'><p><%=h @service_request.product %></p></div>
+				<div class="clear"></div>
+			</li>
+			<li class='cell'>
+				<div class='col1'>Owner</div>
+				<div class='col2'><p><%=h @service_request.owner.fullname  %></p>
+					<p class='tapit'><%=h @service_request.owner.phone1 %></p>
+					</div>
+				<div class="clear"></div>
+			</li>
+			<li class='cell'>
+				<div class='col1'>Site</div>
+				<div class='col2'><p><%=h @service_request.site.name %> (<%=h @service_request.site.site_id %>)</p>
+					<p class='tapit'><%=h @service_request.site.address %>)</p>
+					</div>
+				<div class="clear"></div>
+			</li>
+			<li class='cell-last'>
+				<div class='col1'>Contact</div>
+				<div class='col2'><p><%=h @service_request.contact.fullname  %></p>
+					<p class='tapit'><%=h @service_request.contact.phone1 %></p>
+					</div>
+				<div class="clear"></div>
+			</li>
+	</ul>
+</div>
+<div class='table-header'>Notes (<%= @notes.count %>)</div>
+<div class="container">
+	<% @note_counter = @notes.count %>
+	<ul><%= render :partial => @notes %></ul>
+</div>
+
+<% if development? || admin? %>
+<div class='right'>
+<%= link_to 'View console', console_url(:mobile=>1) %> |
+<%= link_to 'View desktop', service_request_url(@service_request,:mobile=>0) %> |
+<%= link_to 'Default view', service_request_url(@service_request,:mobile=>-1) %>&nbsp;&nbsp;<br><br>
+</div>
+<div class='clear'></div>	
+<% end %>
+
+
+<script type="text/javascript">
+function toggle(obj) {
+	objA = document.getElementById('closed_'+obj.id);
+	objB = document.getElementById('open_'+obj.id);
+	if (objA.style.display == "block") {
+		obj.style.backgroundImage = "url('../images/sr/caret_down.png')";
+		objA.style.display = "none";
+		objB.style.display = "block"
+	} else {
+		obj.style.backgroundImage = "url('../images/sr/caret_right.png')";
+		objA.style.display = "block";
+		objB.style.display = "none"
+	}
+}
+</script>
+
+

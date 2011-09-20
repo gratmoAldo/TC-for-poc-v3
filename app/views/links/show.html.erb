@@ -1,0 +1,25 @@
+<% title "Link" %>
+<div class='first-pane'>
+<p>
+  <strong>Asset:</strong>
+  <%=h @link.asset_id %>
+</p>
+<p>
+  <strong>Url:</strong>
+  <%=h @link.url %>
+</p>
+<p>
+  <strong>Locale:</strong>
+  <%=h @link.locale %>
+</p>
+<p>
+  <strong>Format:</strong>
+  <%=h @link.format %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_link_path(@link) %> |
+  <%= link_to "Destroy", @link, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", links_path %>
+</p>
+</div>

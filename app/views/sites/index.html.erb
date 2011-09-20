@@ -1,0 +1,28 @@
+<h1>Listing sites</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Country</th>
+    <th>Site</th>
+    <th>Account number</th>
+  </tr>
+
+<% @sites.each do |site| %>
+  <tr>
+    <td><%=h site.name %></td>
+    <td><%=h site.address %></td>
+    <td><%=h site.country %></td>
+    <td><%=h site.site_id %></td>
+    <td><%=h site.account_number %></td>
+    <td><%= link_to 'Show', site %></td>
+    <td><%= link_to 'Edit', edit_site_path(site) %></td>
+    <td><%= link_to 'Destroy', site, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New site', new_site_path %>

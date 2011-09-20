@@ -1,0 +1,3 @@
+e=$('#asset_edit').parents('.asset');
+removeEdit();
+e.html("<%= escape_javascript(render :partial => 'asset', :locals => {:asset => @asset}) %>").effect('highlight',{color: "#C3FCBF"},900,null);

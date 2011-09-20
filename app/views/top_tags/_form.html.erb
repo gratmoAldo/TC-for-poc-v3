@@ -1,0 +1,16 @@
+<% form_for @top_tag do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :tag_id %><br />
+    <%= f.text_field :tag_id %>
+  </p>
+  <p>
+    <%= f.label :asset_id %><br />
+    <%= f.text_field :asset_id %>
+  </p>
+  <p>
+    <%= f.label :counter %><br />
+    <%= f.text_field :counter %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

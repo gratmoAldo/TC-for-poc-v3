@@ -1,0 +1,42 @@
+<% title "Sign up" %>
+<div class='first-pane'>
+	<p class='title_img'>Please sign up</p>
+</div>
+<div class='pane'>
+
+	<p>Already have an account? <%= link_to "Log in", login_path %>.</p>
+
+	<% form_for @user do |f| %>
+	  <%= f.error_messages %>
+	  <p>
+	    <%= "Username" %><br />
+	    <%= f.text_field :username %>
+	  </p>
+	  <p>
+	    <%= "First Name" %><br />
+	    <%= f.text_field :firstname %>
+	  </p>
+	  <p>
+	    <%= "Last Name" %><br />
+	    <%= f.text_field :lastname %>
+	  </p>
+	  <p>
+	    <%= "Email Address" %><br />
+	    <%= f.text_field :email %>
+	  </p>
+	  <p>
+	    <%= "Password" %><br />
+	    <%= f.password_field :password %>
+	  </p>
+	  <p>
+	    <%= "Confirm Password" %><br />
+	    <%= f.password_field :password_confirmation %>
+	  </p>
+	  <p><%= f.submit "Sign up" %></p>
+	<% end %>
+
+</div>
+<%= render '/utils/debug' %>
+
+
+

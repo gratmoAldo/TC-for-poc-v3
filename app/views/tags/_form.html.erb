@@ -1,0 +1,28 @@
+<% form_for @tag do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :display_name %><br />
+    <%= f.text_field :display_name %>
+  </p>
+  <p>
+    <%= f.label :creator_id %><br />
+    <%= f.text_field :creator_id %>
+  </p>
+  <p>
+    <%= f.label :is_reviewed %><br />
+    <%= f.check_box :is_reviewed %>
+  </p>
+  <p>
+    <%= f.label :reviewer_id %><br />
+    <%= f.text_field :reviewer_id %>
+  </p>
+  <p>
+    <%= f.label :reviewed_at %><br />
+    <%= f.datetime_select :reviewed_at %>
+  </p>
+  <p>
+    <%= f.label :is_approved %><br />
+    <%= f.check_box :is_approved %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

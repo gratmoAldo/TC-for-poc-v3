@@ -1,0 +1,13 @@
+<p>
+  <b>Inbox:</b>
+  <%=h @inbox_sr.inbox_id %>
+</p>
+
+<p>
+  <b>Service request:</b>
+  <%=h @inbox_sr.service_request_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_inbox_sr_path(@inbox_sr) %> |
+<%= link_to 'Back', inbox_srs_path %>

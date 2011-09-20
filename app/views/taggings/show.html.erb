@@ -1,0 +1,16 @@
+<% title "Tagging" %>
+
+<p>
+  <strong>Tag:</strong>
+  <%=h @tagging.tag_id %>
+</p>
+<p>
+  <strong>Bookmark:</strong>
+  <%=h @tagging.bookmark_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_tagging_path(@tagging) %> |
+  <%= link_to "Destroy", @tagging, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", taggings_path %>
+</p>

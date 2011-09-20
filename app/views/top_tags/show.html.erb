@@ -1,0 +1,20 @@
+<% title "Top Tag" %>
+
+<p>
+  <strong>Tag:</strong>
+  <%=h @top_tag.tag_id %>
+</p>
+<p>
+  <strong>Asset:</strong>
+  <%=h @top_tag.asset_id %>
+</p>
+<p>
+  <strong>Counter:</strong>
+  <%=h @top_tag.counter %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_top_tag_path(@top_tag) %> |
+  <%= link_to "Destroy", @top_tag, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", top_tags_path %>
+</p>

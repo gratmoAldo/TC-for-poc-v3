@@ -1,0 +1,22 @@
+<% @note_counter-=1 %>
+<% content_tag_for :li, note, :class=>"closed #{(@note_counter>0) ? 'cell' : 'cell-last'}", :onclick=>'toggle(this)', :style=>"background-image: url('../images/sr/caret_right.png');" do %>	
+<div>
+	<table width='100%'><tr>
+		<td width='50%' align='left' valign='top'>
+			<p><strong><%=h note.note_type %></strong></p>
+			<p class='details'><%=h note.owner.fullname %></p>
+		</td>
+		<td width='50%' align='right' valign='top'>
+			<p><strong><%= how_old((Time.now - note.created_at), :format => :long, :ago => true) %></strong></p>
+			<p class='details'><%=short_date note.created_at %></p>
+		</td>
+	</tr></table>
+
+</div>
+<% content_tag_for :div, note, :closed, :class=>'tapit', :style=>'display: block;' do %><%= truncate(format_comment(note.clean_body), :length => 88) %><% end %>
+<% content_tag_for :div, note, :open, :class=>'tapit hidden' do %><%= format_comment(h note.body) %>
+<% if current_user.is_employee? %>
+<p><strong>Visibility:</strong><%= note.visibility %></p>
+<% end %>
+<% end %>
+<% end %>

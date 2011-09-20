@@ -1,0 +1,36 @@
+<% form_for(note_form) do |f| %>
+<%= f.error_messages %>
+<%= f.hidden_field :created_by %>
+<%= f.hidden_field :service_request_id %>
+<div class='new-note'>
+	<div class='form'>
+		<div class='col1'>
+			<table>
+				<tr>
+					<td align='right' class='note-key'>Added By:</td>
+					<td align='left' class='note-value'><%= note_form.owner.fullname %></td>
+				</tr>
+				<tr>
+					<td align='right' class='note-key'>Visibility:</td>
+					<td align='left' class='note-value'><%= f.select :visibility, Note::VALID_VISIBILITY_VALUES %></td>
+				</tr>
+				<tr>
+					<td align='right' class='note-key'>Note Type:</td>
+					<td align='left' class='note-value'><%= f.select :note_type, note_form.valid_user_note_types.collect{|t| [t,t] } %></td>
+				</tr>
+				<tr>
+					<td align='right' width='120px' class='note-key'>Effort (minutes):</td>
+					<td align='left' width='140px' class='note-value'><%= f.text_field :effort_minutes, :size=>6 %></td>
+				</tr>
+			</table>
+		</div>
+		<div class='col2'>
+			<%= f.text_area :body, :rows => 6, :cols => 76 %>
+			<p>
+				<button class="submit" type="submit"><span>Post Note</span></button>
+			</p>
+		</div>
+		<div class='clear'></div>	
+	</div>
+</div>
+<% end %>

@@ -1,0 +1,8 @@
+<% title "Listing inboxes" %>
+<div class='first-pane'>
+<h1>  <%=h @inbox.owner.fullname %>'s Inbox</h1>
+</div>	
+<div class='pane'>
+	<%= render :partial => 'one_inbox', :object => @inbox %>
+	<%= link_to 'Back', inboxes_path %>
+</div>

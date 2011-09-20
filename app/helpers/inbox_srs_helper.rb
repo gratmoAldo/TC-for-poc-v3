@@ -1,0 +1,2 @@
+module InboxSrsHelper
+end

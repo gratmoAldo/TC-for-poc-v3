@@ -1,0 +1,151 @@
+<% title "SR #{@service_request.sr_number} - #{@service_request.title}" %>
+<% in_page_title "Service Request Management ##{@service_request.sr_number}" %>
+<div class='first-pane'>
+	<p class='sr_title'><%=h @service_request.title %></p>
+</div>
+<div class='pane'>
+	<div class='sr-details'>
+		<% form_for(@service_request) do |f| %>
+		<div class='sr-line1'>
+			<span class='site-id'><b>Site ID: <%= @service_request.site.site_id %></b></span>
+			<span class='site-name'><b>Site Name: <%= @service_request.site.name %></b></span>
+			<span class='created-at'>Created On <%=simple_date @service_request.created_at  %></span>
+		</div>	
+		<div class='sr-line2'>
+			<%= image_tag 'sr/buttons' %>
+			<label class='right'><button class="submit" type="submit"><span>Update</span></button></label>
+		</div>	
+		<div class='sr-line3'>
+			<div class='col1'>
+				<table>
+					<tr>
+						<td align='right' width='120px'><%= f.label :severity %></td>
+						<td>
+							<div class='sr-col1-select'><%= f.select :severity, [['S1 - Critical',1],['S2 - High Priority',2],['S3 - Standard',3],['S4 - Question',4]], :width => '60' %></div>
+						</td>
+					</tr>
+					<tr>
+						<td align='right' width='120px'><%= f.label :escalation %><br /></td>
+						<td>
+							<div class='sr-col1-select'><%= f.select :escalation, [['not escalated',0],['E1',1],['E2',2],['E3',3],['E4',4],['E5',5]] %></div>
+						</td>
+					</tr>
+					<tr>
+						<td align='right' width='120px'>Status</td>
+						<td>
+							<div class='sr-col1-value'><%= @service_request.status %></div>
+						</td>
+					</tr>
+				</table>			
+			</div>
+			<div class='col2'>
+				<table>
+					<tr>
+						<td align='right' width='140px'><%= f.label :product %></td>
+						<td align='left' width='310px'>
+							<div class='sr-col2-value'><%= f.select :product, ['Accelor 1.3 SP1','Connect Server 5.3 SP3', 'CME Crayiion 300-A','CME Crayiion 300-B','Connect Server 5.3 SP4','Nayworker 2.3', 'Nayworker 2.4', 'Nayworker 2.5'] %></div>
+						</td>
+					</tr>
+					<tr>
+						<td align='right' width='120px' valign='top'>Problem Description:</td>
+						<td>
+							<div class='sr-col2-value'><%= truncate format_comment(h @service_request.clean_description), 168 %></div>
+						</td>
+					</tr>
+					<tr>
+						<td align='right' width='120px'>Last Updated Date:</td>
+						<td>
+							<div class='sr-col2-value'><%=simple_date @service_request.updated_at %></div>
+						</td>
+					</tr>
+					<tr>
+						<td align='right' width='120px'>Next Action Date:</td>
+						<td>
+							<div class='sr-col2-value red'><%=simple_date @service_request.next_action_at  %></div>
+						</td>
+					</tr>
+					<tr>
+						<td align='right' width='120px'><%= f.label :owner_id %></td>
+						<td>
+							<div class='sr-col2-value'><%= f.select :owner_id, User.employees.active.collect{|u| [ u.fullname, u.id] } %></div>
+						</td>
+					</tr>
+				</table>
+			</div>	
+			<div class='clear'></div>	
+			<div class='sr-line4'>
+				<p> 
+					<strong><%= f.label :contact_id %></strong>:
+					<%= f.select :contact_id, User.active.collect{|u| [ u.fullname, u.id] } %>
+				</p>
+			</div>		
+		</div>	
+		<% end %>
+	</div>
+
+</div>
+<div class='pane'>
+	<div class='notes'>
+		<div class='sr-line1'>
+			<strong>Notes (<%= @service_request.notes.count %>)</strong>
+		</div>
+		<div class='new-note'>
+			<%= render 'notes/note_form', :object => @new_note %>
+		</div>
+		<ul>
+			<% for note in @notes %>
+			<li class='one-note'>
+				<div class='col1'>
+					<table>
+						<tr>
+							<td align='right' width='120px' class='note-key'>Date:</td>
+							<td align='left' width='150px' class='note-value'><%= simple_date note.updated_at %></td>
+						</tr>
+						<tr>
+							<td align='right' class='note-key'>Added By:</td>
+							<td align='left' class='note-value'><%= note.owner.fullname %></td>
+						</tr>
+						<tr>
+							<td align='right' class='note-key'>Visibility:</td>
+							<td align='left' class='note-value'><%= note.visibility %></td>
+						</tr>
+						<tr>
+							<td align='right' class='note-key'>Note Type:</td>
+							<td align='left' class='note-value'><%= note.note_type %></td>
+						</tr>
+					</table>
+				</div>
+				<div class='col2'>
+					<p><%= format_comment(h note.body) %></p>  
+				</div>
+				<div class='clear'></div>	
+			</li>  
+			<% end %>
+		</ul>
+	</div>
+	<% if development? || admin? %>
+	<div class='right'><%= link_to 'View mobile', service_request_url(@service_request,:mobile=>1) %></div>
+	<div class='clear'></div>	
+	<% end %>
+</div>
+<div class='pane'>
+	<div class='sr-line1'>
+		<strong>Watchers (<%= @watchers.count %>)</strong>
+	</div>
+	<div class='left' style='margin: 5px 0;'>
+		<p><%= @watchers.collect { |user| link_to_if admin?, user.fullname, inbox_path(user.inbox) }.join(' / ') %></p>
+	</div>
+	<% unless @service_request.worked_by current_user %>
+		<% if @inbox_sr.new_record? %>
+			<% form_for(@inbox_sr) do |f| %>
+				<%= f.hidden_field :service_request_id %>
+				<div class='right' style='margin: 5px 0;'><button class="submit" type="submit"><span>Watch</span></button></div>
+			<% end %>
+		<% else %>
+			<div class='right' style='margin: 5px 0;'><%= link_to 'Unwatch', @inbox_sr, :confirm => 'Are you sure?', :method => :delete %></div>
+		<% end %>
+	<% end %>		
+	<div class='clear'></div>	
+
+</div>
+<%= render '/utils/debug' %>

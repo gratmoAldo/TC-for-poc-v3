@@ -1,0 +1,37 @@
+<% title "Log in" %>
+<div class='first-pane'>
+<center><div class='login_form'><% form_tag sessions_path do %>
+	<table cellspacing=8>
+		<tr>
+			<td><strong><%= label_tag :login, "Username or Email Address" %></strong></td>
+			<td><%= text_field_tag :login, params[:login], :size => 35, :maxlength => 128 %></td>
+		</tr>	
+		<tr>
+			<td><strong><%= label_tag :password %></strong></td>
+			<td><%= password_field_tag :password, '', :size => 35, :maxlength => 128  %></td>
+		</tr>	
+		<tr>
+			<td></td>
+			<td><button class="submit" type="submit"><span>Log In</span></button> or <%= link_to "Sign up!", signup_path %></td>
+		</tr>	
+	</table>
+	<% end %>
+</div>
+</center></div>
+<div class='pane'>
+	<div class='users'>
+		<% if development? %>
+			<h3>Administrators</h3>
+			<p><%= render :partial => 'user_link', :collection => @administrators %></p>
+		<% end %>
+		<h3>Employees</h3>
+		<p><%= render :partial => 'user_link', :collection => @employees %></p>
+
+	    <h3>Partners</h3>
+		<p><%= render :partial => 'user_link', :collection => @partners %></p>
+
+	    <h3>Customers</h3>
+		<p><%= render :partial => 'user_link', :collection => @customers %></p>
+		</p>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<% title "Links" %>
+<div class='first-pane'>
+<table>
+  <tr>
+    <th>Asset</th>
+    <th>Url</th>
+    <th>Locale</th>
+    <th>Format</th>
+  </tr>
+  <% for link in @links %>
+    <tr>
+      <td><%=h link.asset_id %></td>
+      <td><%=h link.url %></td>
+      <td><%=h link.locale %></td>
+      <td><%=h link.format %></td>
+      <td><%= link_to "Show", link %></td>
+      <td><%= link_to "Edit", edit_link_path(link) %></td>
+      <td><%= link_to "Destroy", link, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Link", new_link_path %></p>
+</div>

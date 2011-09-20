@@ -1,0 +1,49 @@
+<% form_for @asset do |f| %>
+<div class='asset show'>
+<table border="0" cellspacing="5" cellpadding="5">
+	<% if @asset.new_record? %>
+	  <%= text_field_for f, "sid", 10 %>
+	  <%= text_field_for f, "source", 10 %>
+	  <%= text_field_for f, "xid", 10 %>
+	<% else %>
+ 	  <%= table_row "Id", "#{@asset.id} / #{@asset.sid} (#{@asset.source})&nbsp;→&nbsp;#{@asset.xid}" %>
+	<% end %>
+	
+	<% f.fields_for :translations do |builder| %>
+	  <%= render 'translation_fields', :f => builder %>
+	<% end %>
+	
+	<% f.fields_for :links do |builder| %>
+	  <%= render 'link_fields', :f => builder %>
+	<% end %>
+	<%= text_field_for f, "da_type", 60 %>
+	<%= text_field_for f, "da_subtype", 60 %>
+	<%= text_field_for f, "entitlement_model", 60 %>
+	<%= text_field_for f, "entitlement_value", 60 %>
+	<%= text_field_for f, "popularity", 60 %>
+	<%= text_field_for f, "avg_rating", 60 %>
+</table>
+<p>
+  <%= f.label :published_at %><br />
+  <%= f.datetime_select :published_at %>
+</p>
+<p>
+  <%= f.label :expire_at %><br />
+  <%= f.datetime_select :expire_at %>
+</p>
+<p>
+  <%= f.label :is_deleted %> = <%= @asset.is_deleted %>
+</p>
+<p>
+  Tagged by <%= pluralize Bookmark.count(:conditions => {:asset_id=>@asset.id}), 'user' %> with <small><%= @asset.top_tags.map{ |tt| "#{tt.tag.name} (#{tt.counter})"}.join(', ') %></small>
+</p>
+<p>
+  
+</p>
+<div class='form-actions'><button class="submit" type="submit"><span>Save</span></button>
+<button class="cancel" onClick='removeEdit();return(false);'><span>Cancel</span></button></div>
+<div class='col4'>
+<%= f.error_messages %>
+</div>
+<% end %>
+<br clear='all'>

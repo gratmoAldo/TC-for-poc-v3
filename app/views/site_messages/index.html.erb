@@ -1,0 +1,30 @@
+<h1>Listing site_messages</h1>
+
+<table>
+  <tr>
+    <th>Site</th>
+    <th>Expires at</th>
+    <th>Created by</th>
+    <th>Body</th>
+    <th>Status</th>
+    <th>Message function</th>
+  </tr>
+
+<% @site_messages.each do |site_message| %>
+  <tr>
+    <td><%=h site_message.site_id %></td>
+    <td><%=h site_message.expires_at %></td>
+    <td><%=h site_message.created_by %></td>
+    <td><%=h site_message.body %></td>
+    <td><%=h site_message.status %></td>
+    <td><%=h site_message.message_function %></td>
+    <td><%= link_to 'Show', site_message %></td>
+    <td><%= link_to 'Edit', edit_site_message_path(site_message) %></td>
+    <td><%= link_to 'Destroy', site_message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New site_message', new_site_message_path %>

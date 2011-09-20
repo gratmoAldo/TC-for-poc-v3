@@ -1,0 +1,22 @@
+<% title "Taggings" %>
+<div class='first-pane'>
+<table>
+  <tr>
+    <th>Tag</th>
+    <th>Asset ID</th>
+    <th>Bookmark</th>
+  </tr>
+  <% for tagging in @taggings %>
+    <tr>
+      <td><%=h tagging.tag_id %></td>
+      <td><%=h tagging.asset_id %></td>
+      <td><%=h tagging.bookmark_id %></td>
+      <td><%= link_to "Show", tagging %></td>
+      <td><%= link_to "Edit", edit_tagging_path(tagging) %></td>
+      <td><%= link_to "Destroy", tagging, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Tagging", new_tagging_path %></p>
+</div>

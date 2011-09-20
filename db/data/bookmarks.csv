@@ -1,0 +1,23 @@
+username,xid,all_tags,is_system,is_private
+herve,docu1005,install Documen,,
+charlie,docu1002,Installation MEDITECH,,
+charlie,docu1005,Installation Documen,,
+charlie,docu1008,Documen administration,,
+charlie,docu1089,Troubleshoot f dummy,,
+charlie,docu1090,Installation Aix,,
+charlie,media1001,overview PerPLEX private cloud,,
+charlie,docu1003,solaris windows documen guide,,
+charlie,docu1103,macosx,,
+emily,docu1002,installation meditech,,TRUE
+emily,docu1005,install Module documen,,TRUE
+emily,docu1008,administration guide documen,,TRUE
+emily,docu1090,installation aix guide,,
+emily,docu1091,install hpux guide,,
+emily,docu1001,administration junk meditech,,
+emily,docu1003,troubleshtootng,,
+emily,media1001,junk,,
+emily,docu1089,troubleshooting,,
+emily,docu1001,dummy meditech,,
+emily,docu1048,informix junk,,
+emily,docu1098,vss_client dummy,,
+emily,docu1103,mac_os_x,,

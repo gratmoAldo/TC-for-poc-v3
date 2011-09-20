@@ -1,0 +1,20 @@
+<% form_for @link do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :asset_id %><br />
+    <%= f.text_field :asset_id %>
+  </p>
+  <p>
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :locale %><br />
+    <%= f.text_field :locale %>
+  </p>
+  <p>
+    <%= f.label :format %><br />
+    <%= f.text_field :format %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

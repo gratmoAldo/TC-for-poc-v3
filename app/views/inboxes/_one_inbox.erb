@@ -1,0 +1,3 @@
+<% one_inbox.service_requests.each do |service_request| %>
+	<p>(<%= service_request.severity_display %>) <%= service_request.sr_number %> - <%= link_to service_request.title, service_request_path(service_request) %></p>
+<% end %>

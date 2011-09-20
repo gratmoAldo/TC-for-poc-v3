@@ -1,0 +1,9 @@
+<% title "New Inbox" %>
+<div class='first-pane'>
+<h1>New Inbox</h1>
+</div>	
+<div class='pane'>
+<%= render :partial => 'inbox_form' %>
+<p><%= link_to "Cancel", inboxes_path %></p>
+</div>
+<%= render '/utils/debug' %>

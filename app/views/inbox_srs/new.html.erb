@@ -1,0 +1,19 @@
+<h1>New inbox_sr</h1>
+
+<% form_for(@inbox_sr) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :inbox_id %><br />
+    <%= f.text_field :inbox_id %>
+  </p>
+  <p>
+    <%= f.label :service_request_id %><br />
+    <%= f.text_field :service_request_id %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', inbox_srs_path %>

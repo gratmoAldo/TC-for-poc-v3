@@ -1,0 +1,28 @@
+<p>
+  <b>Level:</b>
+  <%=h @escalation.level %>
+</p>
+
+<p>
+  <b>Business impact:</b>
+  <%=h @escalation.business_impact %>
+</p>
+
+<p>
+  <b>Escalated by:</b>
+  <%=h @escalation.escalated_by %>
+</p>
+
+<p>
+  <b>De escalated at:</b>
+  <%=h @escalation.de_escalated_at %>
+</p>
+
+<p>
+  <b>De escalated by:</b>
+  <%=h @escalation.de_escalated_by %>
+</p>
+
+
+<%= link_to 'Edit', edit_escalation_path(@escalation) %> |
+<%= link_to 'Back', escalations_path %>

@@ -1,0 +1,11 @@
+<% title "New Service Request" %>
+<div class='first-pane'>
+	<h1>New Service Request</h1>
+</div>	
+<div class='pane'>
+	<%= render :partial => 'service_request_form' %>
+	<p><%= link_to "Back to List", service_requests_path %></p>
+	<%= render '/utils/debug' %>
+</div>
+<%= render '/utils/debug' %>
+

@@ -1,0 +1,40 @@
+<% title "Translation" %>
+
+<p>
+  <strong>Asset:</strong>
+  <%=h @translation.asset_id %>
+</p>
+<p>
+  <strong>Locale:</strong>
+  <%=h @translation.locale %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%=h @translation.title %>
+</p>
+<p>
+  <strong>Short Title:</strong>
+  <%=h @translation.short_title %>
+</p>
+<p>
+  <strong>Abstract:</strong>
+  <%=h @translation.abstract %>
+</p>
+<p>
+  <strong>Thumbnail S:</strong>
+  <%=h @translation.thumbnail_s %>
+</p>
+<p>
+  <strong>Thumbnail M:</strong>
+  <%=h @translation.thumbnail_m %>
+</p>
+<p>
+  <strong>Thumbnail L:</strong>
+  <%=h @translation.thumbnail_l %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_translation_path(@translation) %> |
+  <%= link_to "Destroy", @translation, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", translations_path %>
+</p>

@@ -1,0 +1,28 @@
+<p>
+  <b>Name:</b>
+  <%=h @site.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%=h @site.address %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%=h @site.country %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%=h @site.site_id %>
+</p>
+
+<p>
+  <b>Account number:</b>
+  <%=h @site.account_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

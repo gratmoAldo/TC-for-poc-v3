@@ -1,0 +1,18 @@
+<% content_for :debug do %>
+<% if development? || admin? %>
+<div id="debug">
+	<span><strong>Debugging Tools</strong></span>	
+	<a href="#" onclick="$('#params_debug_info').toggle();return false">Params</a> |
+	<a href="#" onclick="$('#session_debug_info').toggle();return false">Session</a>
+	<fieldset id="params_debug_info" class="debug_info" style="display: none">
+		<legend>Params</legend>
+		<%= debug(params) %>
+	</fieldset>
+	<fieldset id="session_debug_info" class="debug_info" style="display: none">
+		<legend>Session</legend>
+		<%= debug(session) %>
+	</fieldset>
+</div>
+<% end %>
+<% end %>
+

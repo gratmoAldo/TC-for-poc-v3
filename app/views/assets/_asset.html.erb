@@ -1,0 +1,19 @@
+<div class='view'>
+<div class='col1'>
+	<p><%= link_to highlight(asset.title(@locale), @keywords), asset_path(asset) %></p>
+	<p><%= highlight asset.abstract(@locale), @keywords %></p>
+	<p class='details'><%= asset.da_type %> / <%= asset.da_subtype %></p>
+</div>
+<div class='col2'>
+	<p><%= asset.popularity %></p>
+	<p class='details'><%= asset.access_level %></p>
+</div>
+<div class='col3'>
+	<p><%= highlight asset.xid, @keywords %></p>
+	<p class='details'><%= asset.sid %></p>
+</div>
+<div class='view-actions' style='display: none;'>
+	<span class='edit' rel='<%= edit_asset_url(asset) %>'></span>
+</div>
+<br clear='all'>
+</div>

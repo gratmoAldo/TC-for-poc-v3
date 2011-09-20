@@ -1,0 +1,77 @@
+<% title "Asset" %>
+<div class='first-pane'>
+<h1><%=h @asset.title(@locale) %></h1>
+
+<p>
+  <strong>DB id:</strong>
+  <%=h @asset.id %>
+</p>
+<p>
+  <strong>Sid:</strong>
+  <%=h @asset.sid %>
+</p>
+<p>
+  <strong>Xid:</strong>
+  <%=h @asset.xid %>
+</p>
+<p>
+  <strong>Titles:</strong>
+  <%= render(:partial => "translations", :locals => {:asset => @asset})  %>
+</p>
+<p>
+  <strong>Source:</strong>
+  <%=h @asset.source %>
+</p>
+<p>
+  <strong>Da Type:</strong>
+  <%=h @asset.da_type %>
+</p>
+<p>
+  <strong>Da Subtype:</strong>
+  <%=h @asset.da_subtype %>
+</p>
+<p>
+  <strong>Entitlement Model:</strong>
+  <%=h @asset.entitlement_model %>
+</p>
+<p>
+  <strong>Entitlement Value:</strong>
+  <%=h @asset.entitlement_value %>
+</p>
+<p>
+  <strong>Popularity:</strong>
+  <%=h @asset.popularity %>
+</p>
+<p>
+  <strong>Avg Rating:</strong>
+  <%=h @asset.avg_rating %>
+</p>
+<p>
+  <strong>Published At:</strong>
+  <%=h @asset.published_at %>
+</p>
+<p>
+  <strong>Expire At:</strong>
+  <%=h @asset.expire_at %>
+</p>
+<p>
+  <strong>Is Deleted:</strong>
+  <%=h @asset.is_deleted %>
+</p>
+<p>
+  Tagged by <%= pluralize @asset.bookmarks_count, 'user' %> with <small>
+<%
+ top_tags = TopTag.find_all_by_asset_id @asset.id, :order => 'counter desc', :include => :tag, :limit => 10
+ for top_tag in top_tags 
+%>
+  <%= link_to top_tag.tag.name, tag_path(top_tag.tag) %> (<%= top_tag.counter %>)
+<% end %>
+</small>
+</p>
+<p><strong>You Tagged this asset with</strong>: <%=h Bookmark.for_user(current_user).for_assets(@asset.id).inspect %></p>
+<hr noshade/>
+<p>
+  <%= link_to "View All", assets_path %>
+</p>
+</div>
+<%= render '/utils/debug' %>

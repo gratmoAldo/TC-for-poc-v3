@@ -1,0 +1,31 @@
+<h1>New escalation</h1>
+
+<% form_for(@escalation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :level %><br />
+    <%= f.text_field :level %>
+  </p>
+  <p>
+    <%= f.label :business_impact %><br />
+    <%= f.text_field :business_impact %>
+  </p>
+  <p>
+    <%= f.label :escalated_by %><br />
+    <%= f.text_field :escalated_by %>
+  </p>
+  <p>
+    <%= f.label :de_escalated_at %><br />
+    <%= f.datetime_select :de_escalated_at %>
+  </p>
+  <p>
+    <%= f.label :de_escalated_by %><br />
+    <%= f.text_field :de_escalated_by %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', escalations_path %>

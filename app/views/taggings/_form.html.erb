@@ -1,0 +1,12 @@
+<% form_for @tagging do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :tag_id %><br />
+    <%= f.text_field :tag_id %>
+  </p>
+  <p>
+    <%= f.label :bookmark_id %><br />
+    <%= f.text_field :bookmark_id %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

@@ -1,0 +1,39 @@
+<div>
+	<ul>
+		<li class='header'>
+			<div class="col1">
+				<h1>Title</h1>
+				<p class='details'>Content Type/Sub-Type</p>
+			</div>
+			<div class="col2">
+				<h1>Popularity</h1>
+				<p class='details'>Access Level</p>
+			</div>
+			<div class="col3">
+				<h1>XID</h1>
+				<p class='details'>SID</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+		<li class='sub-header'>
+			<% form_tag assets_path, :method => 'get', :id => 'search-form' do %>
+			<div id="search-pane">
+				<span id="search-box"><%= text_field_tag :search, params[:search], :id => 'search-input', :default => "Filter by name or abstract", :size => 50  %></span>
+				<span id="search-button"><%= link_to_function "filter", "$('#search-form').submit()", :id => "search-link" %></span>
+			</div>
+			<% end %>
+		</li>
+		<% if @assets.empty? %>
+		<li id='no-result'>
+			<h1>NO RESULT</h1>
+			Change your selection and try again
+		</li>
+		<% else %>
+  		  <%= render :partial => "asset_row", :collection => @assets %>
+		<% end %>
+	</ul>
+</div>
+<%= will_paginate @assets unless @assets.nil? %>
+
+<div class="tipsy tipsy-south" style="position: absolute; z-index: 100000; top: 38px; left: 105px; visibility: visible; display: block;">
+<div class="tipsy-inner">Saved!</div></div>

@@ -1,0 +1,22 @@
+<h1>Listing inbox_srs</h1>
+
+<table>
+  <tr>
+    <th>Inbox</th>
+    <th>Service request</th>
+  </tr>
+
+<% @inbox_srs.each do |inbox_sr| %>
+  <tr>
+    <td><%=h inbox_sr.inbox_id %></td>
+    <td><%=h inbox_sr.service_request_id %></td>
+    <td><%= link_to 'Show', inbox_sr %></td>
+    <td><%= link_to 'Edit', edit_inbox_sr_path(inbox_sr) %></td>
+    <td><%= link_to 'Destroy', inbox_sr, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New inbox_sr', new_inbox_sr_path %>

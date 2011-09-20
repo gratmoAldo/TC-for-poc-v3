@@ -1,0 +1,9 @@
+$('#asset_edit').siblings('.view').hide();
+$('#asset_edit').html("<%= escape_javascript(render :partial => 'asset_form', :locals => {:asset => @asset}) %>").fadeIn(500);
+$('#errorExplanation').effect('highlight',{color: "#ECF0F7"},500,null);
+e=$('#asset_edit .fieldWithErrors input:not(:hidden):first');
+if (e.is('input')) {e.focus();} else {$('#asset_edit input:not(:hidden):first').focus();}
+$('#asset_edit form').submit(function() {
+	$.post($(this).attr("action"), $(this).serialize(), null, "script");
+	return false;
+})

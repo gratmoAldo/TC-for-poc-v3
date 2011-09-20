@@ -1,0 +1,37 @@
+<div>
+	<ul>
+		<li class='header'>
+			<div class="col1">
+				<h1>Title</h1>
+				<p class='details'>Description</p>
+			</div>
+			<div class="col2">
+				<h1>Contact</h1>
+				<p class='details'>Customer</p>
+			</div>
+			<div class="col3">
+				<h1>Owner</h1>
+				<p class='details'>Next Action</p>
+			</div>
+			<div class="clear"></div>
+		</li>
+		<li class='sub-header'>
+			<% form_tag service_requests_path, :method => 'get', :id => 'search-form' do %>
+			<div id="search-pane">
+				<span id="search-box"><%= text_field_tag :search, params[:search], :id => 'search-input', :default => "Filter by name or abstract", :size => 50  %></span>
+				<span id="search-button"><%= link_to_function "filter", "$('#search-form').submit()", :id => "search-link" %></span>
+			</div>
+			<% end %>
+		</li>
+		<% if @service_requests.empty? %>
+		<li id='no-result'>
+			<h1>NO RESULT</h1>
+			Change your selection and try again
+		</li>
+		<% else %>
+  		  <%= render :partial => "service_request_row", :collection => @service_requests %>
+		<% end %>
+	</ul>
+</div>
+<%= will_paginate @service_requests unless @service_requests.nil? %>
+<%= link_to 'Create Service Request', new_service_request_path %>

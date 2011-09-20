@@ -1,0 +1,29 @@
+<% title "Tags" %>
+<div class='first-pane'>
+<table>
+  <tr>
+    <th>Display Name</th>
+    <th>Namespace</th>
+    <th>Key</th>
+    <th>Value</th>
+    <th>Name</th>
+    <th>Is Reviewed</th>
+    <th>Is Approved</th>
+  </tr>
+  <% for tag in @tags %>
+    <tr>
+      <td><strong><%= tag.id %>:</strong> <%= link_to tag.display_name, tag %> <small>(<%= pluralize tag.taggings_count, 'occurence' %>)</small></td>
+      <td><%=h tag.namespace %></td>
+      <td><%=h tag.key %></td>
+      <td><%=h tag.value %></td>
+      <td><%=h tag.name %></td>
+      <td><%=h tag.is_reviewed %></td>
+      <td><%=h tag.is_approved %></td>
+    </tr>
+  <% end %>
+</table>
+<hr noshade/>
+<%= will_paginate @tags %>
+
+<p><%= link_to "New Tag", new_tag_path %></p>
+</div>

@@ -1,0 +1,25 @@
+<li class='service-request'>
+	<div class='view'>
+	<div class='col1'>
+		<p><%= link_to highlight("#{service_request_row.sr_number} - #{service_request_row.title}", @keywords), service_request_row %></p>
+		<p><%= highlight(truncate(format_comment(service_request_row.clean_description), :length => 188), @keywords) %></p>
+		<p class='details'>
+		<%= service_request_row.status %> | 
+		<%= service_request_row.severity_display %> / <%= service_request_row.escalation_display %> | 
+		<%= highlight(service_request_row.product, @keywords) %>
+		</p>
+	</div>
+	<div class='col2'>
+		<p><%= link_to_if admin?, highlight(service_request_row.contact.fullname, @keywords), inbox_path(service_request_row.contact.inbox) %></p>
+		<p class='details'><%=h service_request_row.site.name %></p>
+	</div>
+	<div class='col3'>
+		<p><%= link_to_if admin?, highlight(service_request_row.owner.fullname, @keywords), inbox_path(service_request_row.owner.inbox) %></p>
+		<p class='details'><%=simple_date service_request_row.next_action_at %></p>
+	</div>
+	<div class='view-actions'>
+		<p><%= link_to 'edit', edit_service_request_url(service_request_row) %></p>
+	</div>
+	<br clear='all'>
+	</div>
+</li>

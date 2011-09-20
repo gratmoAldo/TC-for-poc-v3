@@ -1,0 +1,33 @@
+<p>
+  <b>Site:</b>
+  <%=h @site_message.site_id %>
+</p>
+
+<p>
+  <b>Expires at:</b>
+  <%=h @site_message.expires_at %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%=h @site_message.created_by %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @site_message.body %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%=h @site_message.status %>
+</p>
+
+<p>
+  <b>Message function:</b>
+  <%=h @site_message.message_function %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_message_path(@site_message) %> |
+<%= link_to 'Back', site_messages_path %>

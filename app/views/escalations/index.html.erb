@@ -1,0 +1,28 @@
+<h1>Listing escalations</h1>
+
+<table>
+  <tr>
+    <th>Level</th>
+    <th>Business impact</th>
+    <th>Escalated by</th>
+    <th>De escalated at</th>
+    <th>De escalated by</th>
+  </tr>
+
+<% @escalations.each do |escalation| %>
+  <tr>
+    <td><%=h escalation.level %></td>
+    <td><%=h escalation.business_impact %></td>
+    <td><%=h escalation.escalated_by %></td>
+    <td><%=h escalation.de_escalated_at %></td>
+    <td><%=h escalation.de_escalated_by %></td>
+    <td><%= link_to 'Show', escalation %></td>
+    <td><%= link_to 'Edit', edit_escalation_path(escalation) %></td>
+    <td><%= link_to 'Destroy', escalation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New escalation', new_escalation_path %>

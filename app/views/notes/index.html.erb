@@ -1,0 +1,53 @@
+<% title "Notes" %>
+<div class='first-pane'>
+	<h1>Listing notes</h1>
+</div>
+<div class='pane'>
+	<div class='sys-notes'>
+		<ul class='search-bar'>
+			<li class='sub-header'>
+			<% form_tag notes_path, :method => 'get', :id => 'search-form' do %>
+			<div id="search-pane">
+				<span id="search-box"><%= text_field_tag :search, params[:search], :id => 'search-input', :default => "Filter by name or abstract", :size => 50  %></span>
+				<span id="search-button"><%= link_to_function "filter", "$('#search-form').submit()", :id => "search-link" %></span>
+			</div>
+			<% end %>
+		</li>
+	</ul>		
+	<table cellpadding=0 cellspacing=0 width='100%'>
+		<tr>
+			<th>Created At</th>
+			<th>SR #</th>
+			<th>Created by</th>
+			<th>Visibility</th>
+			<th>Effort</th>
+			<th>Note type</th>
+			<th width='45%'>Body</th>
+			<th width='10%'>Actions</th>
+		</tr>
+
+		<% @notes.each do |note| %>
+		<tr>
+			<td><strong><%= how_old Time.now - note.created_at %></strong></td>
+			<td>
+			<% if note.service_request.nil? %>N/A
+			<% else %><%= link_to note.service_request.sr_number, note.service_request, :title => note.service_request.title %>
+			<% end %>
+			</td>
+			<td><%=h note.owner.fullname %></td>
+			<td><%=h note.visibility %></td>
+			<td><%=h note.effort_minutes %> min</td>
+			<td><%=h note.note_type %></td>
+			<td><%=highlight(note.body, @keywords) %></td>
+			<td NOWRAP><%= link_to 'Edit', edit_note_path(note) %> |
+			<%= link_to 'Delete', note, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+		<% end %>
+	</table>
+	<hr/>
+	<%= will_paginate @notes unless @notes.nil? %>
+
+</div>
+</div>
+<%= render '/utils/debug' %>
+<% javascript "assets" %>

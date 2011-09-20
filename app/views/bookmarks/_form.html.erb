@@ -1,0 +1,19 @@
+<% form_for @bookmark do |f| %>
+<%= f.error_messages %>
+<table cellspacing=10>
+	<%= text_field_for f, "user_id" %>
+	<%= text_field_for f, "asset_id" %>
+	<%= text_field_for f, "title", 60 %>
+	<%= text_area_for f, "note" %>
+	<%= text_field_for f, "all_tags", 60 %>
+	<tr>
+		<td>    <%= f.label :is_private %></td>
+		<td>    <%= f.check_box :is_private %></td>
+	</tr>
+	<tr>
+		<td>    <%= f.label :is_system %></td>
+		<td>    <%= f.check_box :is_system %></td>
+	</tr>
+</table>
+<p><%= f.submit "Submit" %></p>
+<% end %>

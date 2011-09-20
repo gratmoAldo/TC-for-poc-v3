@@ -1,0 +1,69 @@
+==================================================================== scaffold - part 1
+rails content_hub_v3
+cd content_hub_v3
+./script/generate nifty_layout 
+./script/generate nifty_authentication
+./script/generate nifty_scaffold asset sid:string source:string xid:string da_type:string da_subtype:string entitlement_model:integer entitlement_value:integer popularity:integer avg_rating:integer published_at:datetime expire_at:datetime is_deleted:boolean
+./script/generate nifty_scaffold tag namespace:string key:string value:string name:string creator_id:integer is_reviewed:boolean reviewer_id:integer reviewed_at:datetime is_approved:boolean
+./script/generate nifty_scaffold tagging tag_id:integer user_id:integer asset_id:integer bookmark_id:integer created_at:datetime --skip-timestamps
+./script/generate nifty_scaffold translation asset_id:integer locale:string title:string short_title:string abstract:text thumbnail_s:string thumbnail_m:string thumbnail_l:string
+./script/generate nifty_scaffold link asset_id:integer url:string locale:string format:string
+./script/generate nifty_scaffold bookmark user_id:integer asset_id:integer title:string note:text is_private:boolean
+./script/generate nifty_scaffold top_tag tag_id:integer asset_id:integer counter:integer
+
+
+
+
+==================================================================== User model
+# STOP! edit user create migration script and replace with
+#./script/generate nifty_scaffold users firstname:string lastname:string login:string email:string password_hash:string password_salt:string reputation:integer locale:string is_admin:boolean access_level:integer
+create_table :users do |t|
+  t.string  :username  # login name
+  t.string  :firstname  # for display, communication
+  t.string  :lastname
+  t.string  :email
+  t.string  :password_hash
+  t.string  :password_salt
+  t.integer :reputation
+  t.string  :locale
+  t.boolean :is_admin # content hub admin
+  t.integer :access_level
+  t.timestamps
+end
+
+
+==================================================================== models
+Asset
+has_many :taggings, :dependent => :destroy
+has_many :tags, :through => :taggings
+has_many :bookmarks
+has_many :links
+has_many :translations
+has_many :top_tags
+
+Bookmark
+has_many :taggings, :dependent => :destroy
+has_many :tags, :through => :taggings
+belongs_to :asset
+
+Tag
+has_many :taggings, :dependent => :destroy
+has_many :assets, :through => :taggings
+has_many :bookmarks, :through => :taggings
+has_many :top_tags
+
+Tagging
+belongs_to :tag
+belongs_to :user
+belongs_to :asset
+belongs_to :bookmark
+
+Link
+belongs_to :asset
+
+Translations
+belongs_to :asset
+
+TopTag
+belongs_to :asset
+belongs_to :tag

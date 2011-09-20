@@ -1,0 +1,36 @@
+<% form_for @translation do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :asset_id %><br />
+    <%= f.text_field :asset_id %>
+  </p>
+  <p>
+    <%= f.label :locale %><br />
+    <%= f.text_field :locale %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :short_title %><br />
+    <%= f.text_field :short_title %>
+  </p>
+  <p>
+    <%= f.label :abstract %><br />
+    <%= f.text_area :abstract %>
+  </p>
+  <p>
+    <%= f.label :thumbnail_s %><br />
+    <%= f.text_field :thumbnail_s %>
+  </p>
+  <p>
+    <%= f.label :thumbnail_m %><br />
+    <%= f.text_field :thumbnail_m %>
+  </p>
+  <p>
+    <%= f.label :thumbnail_l %><br />
+    <%= f.text_field :thumbnail_l %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

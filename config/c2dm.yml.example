@@ -1,0 +1,5 @@
+development:
+    username: your_gmail_address_here
+    password: secret
+    app_name: com.poc.notifyApp
+

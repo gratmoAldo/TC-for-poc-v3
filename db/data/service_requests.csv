@@ -1,0 +1,108 @@
+id,sr_number,title,severity,status,product,description,created_at,updated_at,next_action_at,site,contact,escalation,owner
+"1","40320146","Mysterious mc_deleted_8101becea8005b503 mc_user","2","Open - Customer Action Required","Connect Server 5.3 SP4","PROBLEM DESCRIPTION:
+------------------------------------
+Our connect checker picked up several names and locations that point to a user called...
+mc_deleted_8101becea8005b503   (among others)
+
+Any ideas on where this user would have originated from?
+
+It does not look like a user that a Administrator would establish on their own.
+(How many people do you know that name users like mc_deleted_8101becea8005b503 ???)
+
+I need to know what process might be establishing this user and applying it as part of some ACL records as well as other system objects so that we can prevent trouble in the future.
+
+Here is part of the checker report...
+Checking for ACLs with non-existent users
+Checking for ACLs with missing mc_acl table entries
+Checking for objects with acl domain set to non-existent user
+
+  WARNING CC-0009: object with r_object_id '0c0146438009c92b' has acl_domain entry of 'dm_deleted_8101becea8005b503' which is not a valid user  (REFERRING TO IRPSStdRevr-1 cabinet)
+  WARNING CC-0009: object with r_object_id '0c0146438009c92c' has acl_domain entry of 'dm_deleted_8101becea8005b501' which is not a valid user   (REFERRING TO PSStdAppr-1 cabinet)
+Rows Returned: 2
+
+Checking for objects that belong to non-existent users
+  WARNING CC-0010: object with r_object_id '0b014643800b91a8' belongs to owner 'dm_deleted_8101becea8006b109' which is not a valid user  (REFERRING TO /System/HomeCabinet/CfsPayImgExecEdit folder object)
+  WARNING CC-0010: object with r_object_id '0c0146438009c92b' belongs to owner 'dm_deleted_8101becea8005b503' which is not a valid user  (REFERRING TO IRPSStdRevr-1 cabinet)
+  WARNING CC-0010: object with r_object_id '0c0146438009c92c' belongs to owner 'dm_deleted_8101becea8005b501' which is not a valid user   (REFERRING TO PSStdAppr-1 cabinet)
+  WARNING CC-0010: object with r_object_id '0b014643800b73fe' belongs to owner 'dm_deleted_8101becea8005b503' which is not a valid user   (REFERRING TO /Resources/PSStdRevr-1 folder)
+Rows Returned: 4
+
+
+
+BUSINESS IMPACT: 
+------------------------------------
+Issues like this tend to cast doubt on the validity of our environment so it is really important that we understand the underlying causes of these inconsistencies
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Connect Server
+Version: 5.3 SP4","2011-04-10 11:16:47","2011-04-27 15:39:40","2011-04-10 17:17:00","3322","charlie","0","sameer"
+"2","41018446","Authentication against LDAP Directory failure","2","Open - Customer Action Required","CME Crayiion 300-B","PROBLEM DESCRIPTION:
+------------------------------------
+We have deployed an application were all users validate against LDAP Server (Sun Java System Directory Server 5.2). We have synchronized the users into the connect server.
+There is a 25-40% ""Authentication Failed"" responses.
+
+We have activated trace authentication at the server level. Please see the attached server.log, for examples of correct and failed athentication scenarios.
+
+
+BUSINESS IMPACT: 
+------------------------------------
+Customer very unhappy.
+Users can't access the application. Other have to attempt several times until they gather access.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: CME Crayiion 300-B
+Version: Model 300-B
+
+>
+Host Name: Prod-dcto1p
+Host OS Vendor:Hewlett Packard
+Host OS: HP-UX
+Host OS Version: 11i v2
+Database: ORACLE
+Database Version: 10.2.0.4
+Web Server: 0
+Application Server: BEAWL
+Client UI: 0","2011-04-17 11:58:24","2011-06-02 15:34:07","2011-06-02 14:57:00","3322","charlie","0","sameer"
+"3","40289104","Users unable to access documents in Nayworker 2.3 ","3","Open - Customer Action Required","Nayworker 2.3","PROBLEM DESCRIPTION:
+------------------------------------
+When users in our Tokyo office attempt to access data in Nayworker, they receive a 'Message Viewer: Nayviewer succeeded' screen, but are never able to open the document. Users are able to successfully export and view documents, the issue only arises when attempting to open the document from the application.
+
+BUSINESS IMPACT: 
+------------------------------------
+Nayworker operating from on Windows Server 2003. The local client machine is operating Windows XP with Japanese set as the primary language. 
+
+ENVIRONMENT INFORMATION
+------------------------------------
+<<Product Information>>  
+Product: Nayworker
+Version: 5.3 SP2
+","2011-04-13 10:49:21","2011-04-18 20:21:57","2011-04-13 10:45:00","3322","charlie","0","mark"
+"4","40987654","How to disable caching in development server?","3","Open - Customer Action Required","Connect Server 5.3 SP4","PROBLEM DESCRIPTION:
+------------------------------------
+We are testing custom workflow and would like to disable the global cache. There is no such option in the Administrator or any mention in the documentation.
+
+BUSINESS IMPACT: 
+------------------------------------
+Must deploy in production on 6/1/2011 and risk of delaying go-live.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Connect Server
+Version: 5.3 SP4
+","2011-04-14 11:17:00","2011-04-27 15:34:34","2011-04-14 11:16:00","3322","charlie","0","sameer"
+"5","40987655","Getting 'nw-9102: DNS error' when configuring new node","3","Open - Support Researching","Nayworker 2.5","Please help. I am configuring a new node and getting an error.","2011-04-14 11:18:05","2011-04-26 10:58:19","2011-04-14 11:17:00","3322","charlie","0","herve"
+"6","40987661","Getting errors trying to clone from expired save sets","4","Open - Support Researching","Nayworker 2.5","Problem is impacting our production system and threatening our project time line.","2011-04-14 11:19:23","2011-04-25 17:03:04","2011-04-14 11:18:00","3322","terry","0","sameer"
+"7","40387219","Some batches are still pending for export","4","Open - Support Researching","Accelor 1.3 SP1","PROBLEM DESCRIPTION:
+------------------------------------
+Some batches are still pending for export.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Accelor
+Version: 1.3 SP1","2011-04-15 7:3:34","2011-04-15 18:21:04","2011-04-15 13:18:00","3322","charlie","0","radjesh"

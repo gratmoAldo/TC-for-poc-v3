@@ -1,0 +1,32 @@
+<% title "Translations" %>
+<div class='first-pane'>
+<table>
+  <tr>
+    <th>Asset</th>
+    <th>Locale</th>
+    <th>Title</th>
+    <th>Short Title</th>
+    <th>Abstract</th>
+    <th>Thumbnail S</th>
+    <th>Thumbnail M</th>
+    <th>Thumbnail L</th>
+  </tr>
+  <% for translation in @translations %>
+    <tr>
+      <td><%=h translation.asset_id %></td>
+      <td><%=h translation.locale %></td>
+      <td><%=h translation.title %></td>
+      <td><%=h translation.short_title %></td>
+      <td><%=h translation.abstract %></td>
+      <td><%=h translation.thumbnail_s %></td>
+      <td><%=h translation.thumbnail_m %></td>
+      <td><%=h translation.thumbnail_l %></td>
+      <td><%= link_to "Show", translation %></td>
+      <td><%= link_to "Edit", edit_translation_path(translation) %></td>
+      <td><%= link_to "Destroy", translation, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Translation", new_translation_path %></p>
+</div>

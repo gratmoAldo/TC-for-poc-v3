@@ -1,0 +1,12 @@
+<% title "Listing inboxes" %>
+<div class='first-pane'>
+	<h1>Listing inboxes</h1>
+</div>	
+<div class='pane'>
+<ul>
+	<% @inboxes.each do |inbox| %>
+	<li><%= link_to inbox.name, inbox %></li>
+	<% end %>
+</ul>
+</div>
+<%= render '/utils/debug' %>

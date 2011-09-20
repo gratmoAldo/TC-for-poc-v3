@@ -1,0 +1,38 @@
+<% title "Bookmark" %>
+<div class='first-pane'>
+<p>
+  <strong>User:</strong>
+  <%=h @bookmark.user.fullname %>
+</p>
+<p>
+  <strong>Asset:</strong>
+  <%=h @bookmark.asset.title(@locale) %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%=h @bookmark.title %>
+</p>
+<p>
+  <strong>Note:</strong>
+  <%=h @bookmark.note %>
+</p>
+<p>
+  <strong>All Tags:</strong>
+  <%=h @bookmark.all_tags %>
+</p>
+<p>
+  <strong>Is Private:</strong>
+  <%=h @bookmark.is_private %>
+</p>
+<p>
+  <strong>Is System:</strong>
+  <%=h @bookmark.is_system %>
+</p>
+<hr noshade/>
+<p>
+  <%= link_to "Edit", edit_bookmark_path(@bookmark) %> |
+  <%= link_to "Destroy", @bookmark, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", bookmarks_path %>
+</p>
+<%= render '/utils/debug' %>
+</div>

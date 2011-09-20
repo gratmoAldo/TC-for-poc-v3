@@ -1,0 +1,5 @@
+<ul class='asset_translation'>	
+	<% for locale in asset.locales %>
+		<li><strong><%= h locale %></strong> <%=h asset.title(locale) %></li>
+	<% end %>
+</ul>

@@ -1,0 +1,109 @@
+<% title "Console" %>
+
+<% @subscription_counter = @subscriptions.count %>
+<div class='table-header'>Recent Subscribers (<%= @subscription_counter %>) </div>
+<div class="container">
+	<ul>
+		<% @subscriptions.each do |subscription| %>
+
+		<% @subscription_counter-=1 %>
+		<% content_tag_for :li, subscription, :class=> (@subscription_counter>0) ? 'cell' : 'cell-last' do %>	
+		<div>
+			<table width='100%'><tr>
+				<td width='50%' align='left' valign='top'>
+					<p><strong><%=h subscription.user.fullname %></strong></p>
+					<p class='details'><%=h subscription.notification_method %></p>
+				</td>
+				<td width='50%' align='right' valign='top'>
+					<p><strong><%= how_old((Time.now - subscription.last_subscribed_at), :format => :long, :ago => true) %></strong></p>
+					<p class='details'><%=short_date subscription.last_subscribed_at %></p>
+				</td>
+			</tr></table>
+
+		</div>
+		<div>
+		<label class='strong'><%= subscription.device[:id] %></label> / <label class='display_id'><%=  mid_truncate(subscription.display_id, 30) %></label>
+		</div>
+		<% end %>
+		<% end %>
+	</ul>
+</div>
+
+
+
+
+
+<% @notification_counter = @last_apn_notifications.count %>
+<div class='table-header'>Recent APN Notifications (<%= @notification_counter %>)</div>
+<div class="container">
+	<ul>
+		<% @last_apn_notifications.each do |notification| %>
+
+		<% @notification_counter-=1 %>
+		<% content_tag_for :li, notification, :class=> (@notification_counter>0) ? 'cell' : 'cell-last' do %>	
+		<div>
+			<table width='100%'><tr>
+				<td width='50%' align='left' valign='top'>
+					<p><strong><%=h notification.device_id %></strong></p>
+					<p class='details'><%=h notification.sound %></p>
+				</td>
+				<td width='50%' align='right' valign='top'>
+					<p><strong><%= how_old((Time.now - notification.created_at), :format => :long, :ago => true) %></strong></p>
+					<p class='details'><%=short_date notification.created_at %></p>
+				</td>
+			</tr></table>
+
+		</div>
+		<div>
+		<label><%=h notification.alert.inspect %></label>
+		</div>
+		<% end %>
+		<% end %>
+	</ul>
+</div>
+
+<% @notification_counter = @last_c2dm_notifications.count %>
+<div class='table-header'>Recent C2dm Notifications (<%= @notification_counter %>)</div>
+<div class="container">
+	<ul>
+		<% @last_c2dm_notifications.each do |notification| %>
+
+		<% @notification_counter-=1 %>
+		<% content_tag_for :li, notification, :class=> (@notification_counter>0) ? 'cell' : 'cell-last' do %>	
+		<div>
+			<table width='100%'><tr>
+				<td width='50%' align='left' valign='top'>
+					<p><strong><%=h notification.device_id %></strong></p>
+				</td>
+				<td width='50%' align='right' valign='top'>
+					<p><strong><%= how_old((Time.now - notification.created_at), :format => :long, :ago => true) %></strong></p>
+					<p class='details'><%=short_date notification.created_at %></p>
+				</td>
+			</tr></table>
+
+		</div>
+
+		<div>
+		<label><%=h notification.data.inspect %></label>
+		</div>
+		<% end %>
+		<% end %>
+	</ul>
+</div>
+
+<script type="text/javascript">
+function toggle(obj) {
+	objA = document.getElementById('closed_'+obj.id);
+	objB = document.getElementById('open_'+obj.id);
+	if (objA.style.display == "block") {
+		obj.style.backgroundImage = "url('../images/sr/caret_down.png')";
+		objA.style.display = "none";
+		objB.style.display = "block"
+	} else {
+		obj.style.backgroundImage = "url('../images/sr/caret_right.png')";
+		objA.style.display = "block";
+		objB.style.display = "none"
+	}
+}
+</script>
+

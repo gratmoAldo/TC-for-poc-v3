@@ -1,0 +1,164 @@
+<% title "Console" %>
+
+<div class='first-pane'>
+	<div class="console-section">
+		<h2>Subscribers</h2>
+		<table width='100%'>
+			<tr>
+				<th>User</th>
+				<th align='center'>Method</th>
+				<th width='32%'>Display ID</th>
+				<th align='center'>Badge</th>
+				<th align='center'>SR Level</th>
+				<th>Created *</th>
+				<th>Last Subscribed *</th>
+				<th></th>
+			</tr>
+
+			<% @subscriptions.each do |subscription| %>
+			<tr>
+				<td><label class='strong'><%=h subscription.user.fullname %></label></td>
+				<td align='center'><%=h subscription.notification_method %></td>
+				<td><label class='strong'><%= subscription.device[:id] %></label> / <label class='display_id'><%=  mid_truncate(subscription.display_id, 34) %></label></td>
+				<td align='center'><%=h subscription.badge %></td>
+				<td align='center'><%=h subscription.sr_severity %></td>
+				<td><label class='strong'><%= how_old((Time.now - subscription.created_at), :format => :long, :ago => true)   %></label><br>
+					<%=full_date subscription.created_at %>
+				</td>
+				<td><label class='strong'><%= how_old((Time.now - subscription.last_subscribed_at), :format => :long, :ago => true) %></label><br />
+					<%=full_date subscription.last_subscribed_at %>
+				</td>
+				<td><%= link_to 'Delete', subscription, :confirm => 'Are you sure?', :method => :delete %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+
+</div>
+<div class='pane'>
+
+	<div class="console-section">
+		<h2>Recent APN Notifications (iOS)</h2>
+		<table width='100%'>
+			<tr>
+				<th>Message</th>
+				<th>Custom Data</th>
+				<th align='center'>Device</th>
+				<th>Sounds</th>
+				<th>Created *</th>
+				<th>Sent *</th>
+			</tr>
+
+			<% @last_apn_notifications.each do |notification| %>
+			<tr>
+				<td><label class='strong'><%=h notification.alert.inspect %></label></td>
+				<td><%=h notification.custom_properties.inspect %></td>
+				<td align='center'><%=h notification.device_id %></td>
+				<td><%=h notification.sound %></td>
+				<td><label class='strong'><%= how_old((Time.now - notification.created_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date notification.created_at %>
+				</td>
+				<td>
+					<% if !notification.sent_at.nil? %>
+					<label class='strong'><%= how_old((Time.now - notification.sent_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date notification.sent_at %>
+					<% else %>
+					pending...
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div class='pane'>
+
+	<div class="console-section">
+		<h2>Recent C2DM Notifications (Android)</h2>
+		<table width='100%'>
+			<tr>
+				<th>Message</th>
+				<th align='center'>Device</th>
+				<th>Created *</th>
+				<th>Sent *</th>
+			</tr>
+
+			<% @last_c2dm_notifications.each do |notification| %>
+			<tr>
+				<td><label class='strong'><%=h notification.data.inspect %></label></td>
+				<td align='center'><%=h notification.device_id %></td>
+				<td><label class='strong'><%= how_old((Time.now - notification.created_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date notification.created_at %>
+				</td>
+				<td>
+					<% if !notification.sent_at.nil? %>
+					<label class='strong'><%= how_old((Time.now - notification.sent_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date notification.sent_at %>
+					<% else %>
+					pending...
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div class='pane'>	
+	<div class="console-section">
+		<h2>Recent APN Devices (iOS)</h2>
+		<table width='100%'>
+			<tr>
+				<th align='center'>ID</th>
+				<th>Token</th>
+				<th>Created *</th>
+				<th>Updated *</th>
+			</tr>
+
+			<% @last_apn_devices.each do |device| %>
+			<tr>
+				<td align='center'><label class='strong'><%=h device.id %></label></td>
+				<td><label class='display_id'><%=h mid_truncate(device.token, 41) %></label></td>
+				<td><label class='strong'><%= how_old((Time.now - device.created_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date device.created_at %>
+				</td>
+				<td><label class='strong'><%= how_old((Time.now - device.updated_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date device.updated_at %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+<div class='pane'>	
+	<div class="console-section">
+		<h2>Recent C2DM Devices (Android)</h2>
+		<table width='100%'>
+			<tr>
+				<th align='center'>ID</th>
+				<th>Registration ID</th>
+				<th>Created *</th>
+				<th>Last Registered *</th>
+			</tr>
+
+			<% @last_c2dm_devices.each do |device| %>
+			<tr>
+				<td align='center'><label class='strong'><%=h device.id %></label></td>
+				<td><label class='display_id'><%=h mid_truncate(device.registration_id, 41) %></label></td>
+				<td><label class='strong'><%= how_old((Time.now - device.created_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date device.created_at %>
+				</td>
+				<td><label class='strong'><%= how_old((Time.now - device.last_registered_at), :format => :long, :ago => true) %></label><br>
+					<%=full_date device.last_registered_at %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+	<p class='small-print'>* <%= Time.zone.name %></p>
+</div>
+
+
+<%= render '/utils/debug' %>

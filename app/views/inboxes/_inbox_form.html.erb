@@ -1,0 +1,15 @@
+<% form_for(@inbox) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :owner_id %><br />
+    <%= f.select :owner_id, User.active.collect{|u| [ u.fullname, u.id] } %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>

@@ -1,0 +1,2 @@
+module MyinboxHelper
+end
