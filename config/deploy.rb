@@ -14,7 +14,7 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "here")]
 
 # :scm = `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :scm, :git
-set :repository,  "git://github.com/hervenln/TC-for-poc.git"
+set :repository,  "git@github.com:hervenln/TC-for-poc-v3.git"
 set :branch, "master"
 set :checkout, "export"
 set :rails_env, :production
