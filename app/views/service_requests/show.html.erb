@@ -55,7 +55,7 @@
 					<tr>
 						<td align='right' width='120px'>Last Updated Date:</td>
 						<td>
-							<div class='sr-col2-value'><%=simple_date @service_request.updated_at %></div>
+							<div class='sr-col2-value'><%=simple_date @service_request.last_updated_at %></div>
 						</td>
 					</tr>
 					<tr>
@@ -99,7 +99,7 @@
 					<table>
 						<tr>
 							<td align='right' width='120px' class='note-key'>Date:</td>
-							<td align='left' width='150px' class='note-value'><%= simple_date note.updated_at %></td>
+							<td align='left' width='150px' class='note-value'><%= simple_date note.created_at %></td>
 						</tr>
 						<tr>
 							<td align='right' class='note-key'>Added By:</td>

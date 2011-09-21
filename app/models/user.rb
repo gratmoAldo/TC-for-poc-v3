@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
   # has_many :inboxes, :foreign_key => :owner_id
   has_one :inbox, :foreign_key => :owner_id
   
+  def self.system_user
+    User.find_by_username SYSTEM_USER
+  end
+  
   def self.watching_sr(sr_id)
     User.find_by_sql(
       "SELECT DISTINCT users.* FROM 'users' INNER JOIN inboxes i ON i.owner_id = users.id " \
@@ -62,8 +66,11 @@ class User < ActiveRecord::Base
 
   # login can be either username or email address
   def self.authenticate(login, pass)
-    sleep 1
-    logger.info("--- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    
+    # Pause 1 second during authentication 
+    # sleep 1
+    
+    # logger.info("--- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     logger.info("Authenticating with login=#{login} & pass=#{pass}")
     logger.info("---")
     user = active.find_by_username(login.downcase) || find_by_email(login)

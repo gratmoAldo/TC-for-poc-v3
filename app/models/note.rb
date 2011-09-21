@@ -2,7 +2,8 @@ class Note < ActiveRecord::Base
 
   attr_accessible :visibility, :effort_minutes, :note_type, :body, :created_by, :service_request_id
 
-  VALID_SYSTEM_NOTE_TYPES = ["Administrative","Problem Description","Live chat","Notification Sent","Web Update","Mobile Update"]
+  NOTE_TYPE_ADMINISTRATIVE = "Administrative"
+  VALID_SYSTEM_NOTE_TYPES = [NOTE_TYPE_ADMINISTRATIVE,"Problem Description","Live chat","Notification Sent","Web Update","Mobile Update"]
   VALID_USER_NOTE_TYPES = ["Chat","Action Plan","Consult","Customer Contacted","Initial Response","L2 Consult","Research","Sent Email","Webex"]
   VISIBILITY_PUBLIC = "Public"
   VISIBILITY_INTERNAL = "Internal"
@@ -54,5 +55,18 @@ class Note < ActiveRecord::Base
     body.gsub(/[ ]*PROBLEM DESCRIPTION[:\-\s]*|BUSINESS IMPACT[:\-\s]*|ENVIRONMENT INFORMATION[:\-\s]*|(\s)/i,' ').squeeze(' ').strip    
   end
   
+  
+  def to_hash(options={})    
+    options.reverse_merge! :locale => @locale
+    {      
+      :created_at => self.created_at,
+      :updated_at => self.updated_at,
+      :created_by_name => self.owner.fullname.to_s,
+      :visibility => self.visibility.to_s,
+      :effort => self.effort_minutes.to_i,
+      :note_type => self.note_type.to_s,
+      :body => self.body.to_s      
+    }
+  end
   
 end

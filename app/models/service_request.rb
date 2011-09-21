@@ -41,7 +41,7 @@ class ServiceRequest < ActiveRecord::Base
 
 
   def limited_description
-    (description||"")[0..16384]
+    (description.to_s)[0..16384]
   end
   
   # def last_updated_at
@@ -53,12 +53,13 @@ class ServiceRequest < ActiveRecord::Base
   end
 
   def self.lookup(id)
-    logger.info "Looking up SR #{id}"
+    # logger.info "Looking up SR #{id}"
     ServiceRequest.find :first, {:conditions => ["id=? or sr_number=?",id,id]}    
   end
 
   def last_updated_at
     last_note = self.notes.last
+    # logger.info "last updated at - last_note = #{last_note.inspect}"
     return last_note.nil? ? self.updated_at : last_note.created_at
   end
   
@@ -111,6 +112,12 @@ class ServiceRequest < ActiveRecord::Base
 #    find inboxes that do not include this service request amongst 
   end
 
+  def filtered_description
+    # 'PROBLEM DESCRIPTION: ------------------------------------ When users in our Tokyo'
+    description.gsub(/[ ]*PROBLEM DESCRIPTION[:\-\s]*/i,' ').strip    
+  end
+  
+
   def clean_description
     # 'PROBLEM DESCRIPTION: ------------------------------------ When users in our Tokyo'
     description.gsub(/[ ]*PROBLEM DESCRIPTION[:\-\s]*|BUSINESS IMPACT[:\-\s]*|ENVIRONMENT INFORMATION[:\-\s]*|(\s)/i,' ').strip    
@@ -123,6 +130,52 @@ class ServiceRequest < ActiveRecord::Base
        user_id = user.to_i
      end
      [self.owner_id, self.contact_id].include? user_id
+  end
+
+  def to_hash(options={})    
+    options.reverse_merge! :role => User::ROLE_FRIEND, :user_id => 0, :format => :summary
+    
+    # logger.info "user role is #{options[:role]}"
+    res = {
+      :sr_number => self.sr_number.to_i,
+      :sr_status => self.status.to_s,
+      :title => self.title.to_s,
+      :severity => self.severity.to_i,
+      :escalation => self.escalation.to_i,
+      :product => self.product.to_s,
+      :site_name => self.site.name.to_s,
+      :nb_notes => self.notes_count_per_role(options[:role]),
+      
+      :next_action_at => self.next_action_at.to_i,
+      :last_updated_at => self.last_updated_at.to_i,
+      :created_at => self.created_at.to_i,
+      :closed_at => self.closed_at.to_i,
+      
+      :is_customer => self.contact_id == options[:user_id],
+      :is_agent => self.owner_id == options[:user_id]
+    }
+
+      # Deprecated
+      # :last_updated_in_words => how_old((Time.now - self.last_updated_at).to_i, :format => :long, :ago => true), #{}"#{1+rand(12)} hours ago",
+      # :next_action_in_words => how_old((Time.now - self.next_action_at).to_i, :format => :long, :ago => true),
+      # :customer => self.site.name, # renamed to site_name
+    if options[:format] == :complete
+      res.merge! :problem_description => self.filtered_description,
+          :site_address => self.site.address.to_s,
+          :site_id => self.site.site_id.to_i,
+          :customer_name => self.contact.fullname.to_s,
+          :customer_email => self.contact.email.to_s,
+          :customer_phone1 => self.contact.phone1.to_s,
+          :customer_phone2 => self.contact.phone2.to_s,
+          :agent_name => self.owner.fullname.to_s,
+          :agent_email => self.owner.email.to_s,
+          :agent_phone1 => self.owner.phone1.to_s,
+          :agent_phone2 => self.owner.phone2.to_s,
+          :recent_notes => @notes.collect(&:to_hash)
+          
+      end
+      # logger.info "ServiceRequest to hash returnin #{res.inspect}"
+      res
   end
 
 =begin  
