@@ -1,4 +1,6 @@
 class InboxSrsController < ApplicationController
+  before_filter :login_required
+  
   # def new
   #   @user = User.new
   # end
@@ -15,11 +17,23 @@ class InboxSrsController < ApplicationController
         
     respond_to do |format|
       if inbox_sr.valid?
-        flash[:notice] = 'You are now watching this Service Request.'
-        format.html { redirect_to sr }
+        format.html { 
+          flash[:notice] = 'You are now watching this Service Request.'
+          redirect_to sr 
+        }
+        format.json { 
+          render :json => {}, :status => :created
+        }
       else
-        flash[:error] = 'You are now watching this Service Request.'
-        format.html { redirect_to sr }
+        errors = inbox_sr.errors.full_messages.join('; ') if inbox_sr
+        logger.info "Failed to watch with id #{params[:inbox_sr][:service_request_id]} failed. Error was #{errors}"
+        format.html { 
+          flash[:error] = 'Failed to watch this Service Request'
+          redirect_to sr 
+        }
+        format.json { 
+          render :json => {:error => errors, :status => :unprocessable_entity }, :status => :unprocessable_entity 
+        }
       end
     end
   end
@@ -29,13 +43,28 @@ class InboxSrsController < ApplicationController
   def destroy
     myinbox = Inbox.owned_by(current_user).first
     inbox_sr = InboxSr.find(:first, :conditions => ["id=? and inbox_id=?",params[:id],myinbox])
-    if inbox_sr
-      sr = ServiceRequest.find_by_id inbox_sr[:service_request_id]
-      inbox_sr.destroy
-      logger.info "found sr=#{sr.inspect}"
-    else
-      logger.info "inbox_sr not found"
+    
+    respond_to do |format|
+      if inbox_sr
+        inbox_sr.destroy
+        format.html { 
+          sr = ServiceRequest.find_by_id inbox_sr[:service_request_id]
+          flash[:notice] = 'You stopped watching this Service Request.'
+          redirect_to sr 
+        }
+        format.json { 
+          render :json => {}, :status => :ok
+        }
+      else
+        format.html { 
+          sr = ServiceRequest.find_by_id inbox_sr[:service_request_id]
+          flash[:error] = 'Cannot unwatch this Service Request'
+          redirect_to sr 
+        }
+        format.json { 
+          render :json => {:error => errors, :status => :unprocessable_entity }, :status => :unprocessable_entity 
+        }
+      end
     end
-    redirect_to service_request_path(sr)    
   end
 end

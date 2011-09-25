@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110919184331) do
+ActiveRecord::Schema.define(:version => 20110924180527) do
 
   create_table "admins", :force => true do |t|
     t.string   "key"
@@ -180,6 +180,11 @@ ActiveRecord::Schema.define(:version => 20110919184331) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "service_request_readflags", :force => true do |t|
+    t.integer "user_id"
+    t.integer "service_request_id"
   end
 
   create_table "service_requests", :force => true do |t|

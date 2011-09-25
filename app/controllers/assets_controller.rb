@@ -47,7 +47,7 @@ class AssetsController < ApplicationController
       @locales = @asset.locales
       if params[:id] != @asset.to_param
         headers["Status"] = "301 Moved Permanently"
-        redirect_to asset_url(@asset.to_param)
+        redirect_to @asset
       end
     end
   end

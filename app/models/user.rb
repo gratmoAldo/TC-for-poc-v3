@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
   named_scope :active_normal, {:conditions => ["users.is_admin=? and users.is_deleted=?", false, false]}
   named_scope :only_ids, {:select => "DISTINCT users.id"}
   named_scope :limit, lambda { |limit| {:limit => limit} unless limit.nil? or limit < 1}
-    
+
+  has_many :service_request_readflags, :dependent => :destroy
   has_many :bookmarks
   # has_many :inboxes, :foreign_key => :owner_id
   has_one :inbox, :foreign_key => :owner_id

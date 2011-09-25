@@ -3,6 +3,7 @@ class ServiceRequest < ActiveRecord::Base
   belongs_to :contact, :class_name => 'User', :foreign_key => 'contact_id'
 
   has_many :notes, :dependent => :destroy
+  has_many :service_request_readflags, :dependent => :destroy
   has_many :inbox_srs, :dependent => :destroy
   has_many :inboxes, 
            :through => :inbox_srs
@@ -19,11 +20,12 @@ class ServiceRequest < ActiveRecord::Base
   named_scope :sort_by_sr_number, {:order => "service_requests.sr_number desc"}
   
   named_scope :with_fulltext, lambda { |keywords| # keywords is an array of keywords
-    {:conditions => [Array.new(keywords.length){"(service_requests.title like ? or service_requests.description like ? or service_requests.product like ?)"}.join(" and ") +
-                     " or service_requests.sr_number in (?)"] +
-                     keywords.collect{|k| ["%#{k}%","%#{k}%","%#{k}%"]}.flatten +
-                     [keywords]
-    } unless keywords.blank?
+    # {:conditions => [Array.new(keywords.length){"(service_requests.title like ? or service_requests.description like ? or service_requests.product like ?)"}.join(" and ") +
+    #                  " or service_requests.sr_number in (?)"] +
+    #                  keywords.collect{|k| ["%#{k}%","%#{k}%","%#{k}%"]}.flatten +
+    #                  [keywords]
+    # } unless keywords.blank?
+    {:conditions => ["service_requests.sr_number in (?)", keywords] } unless keywords.blank?
   }
   
   
@@ -33,6 +35,16 @@ class ServiceRequest < ActiveRecord::Base
     else
       Note.count :conditions => ["notes.service_request_id = ? and notes.visibility = ?", self, Note::VISIBILITY_PUBLIC]
     end
+  end
+
+  def mark_as_read_by_user(user)
+    self.service_request_readflags.find_or_create_by_user_id user.id
+    
+  end
+  
+  def is_read_by_user(user)
+    logger.info "is_read_by_user(user #{user.inspect}) = #{!ServiceRequestReadflag.find_by_user_id_and_service_request_id(user, self).nil?}"
+    !ServiceRequestReadflag.find_by_user_id_and_service_request_id(user, self).nil?
   end
 
   def sanatize
@@ -136,14 +148,22 @@ class ServiceRequest < ActiveRecord::Base
     options.reverse_merge! :role => User::ROLE_FRIEND, :user_id => 0, :format => :summary
     
     # logger.info "user role is #{options[:role]}"
+    
+    user_inbox = Inbox.owned_by(options[:user_id]).first
+    inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",self,user_inbox])
+    inbox_sr_id = inbox_sr.nil? ? 0 : inbox_sr.id
+    
     res = {
       :sr_number => self.sr_number.to_i,
+      :service_request_id => self.id,
+      :inbox_srs_id => inbox_sr_id,
       :sr_status => self.status.to_s,
       :title => self.title.to_s,
       :severity => self.severity.to_i,
       :escalation => self.escalation.to_i,
       :product => self.product.to_s,
       :site_name => self.site.name.to_s,
+      :site_id => self.site.site_id.to_i,
       :nb_notes => self.notes_count_per_role(options[:role]),
       
       :next_action_at => self.next_action_at.to_i,
@@ -152,7 +172,8 @@ class ServiceRequest < ActiveRecord::Base
       :closed_at => self.closed_at.to_i,
       
       :is_customer => self.contact_id == options[:user_id],
-      :is_agent => self.owner_id == options[:user_id]
+      :is_agent => self.owner_id == options[:user_id],
+      :is_read => self.is_read_by_user(options[:user_id])
     }
 
       # Deprecated
@@ -162,7 +183,6 @@ class ServiceRequest < ActiveRecord::Base
     if options[:format] == :complete
       res.merge! :problem_description => self.filtered_description,
           :site_address => self.site.address.to_s,
-          :site_id => self.site.site_id.to_i,
           :customer_name => self.contact.fullname.to_s,
           :customer_email => self.contact.email.to_s,
           :customer_phone1 => self.contact.phone1.to_s,
@@ -171,76 +191,11 @@ class ServiceRequest < ActiveRecord::Base
           :agent_email => self.owner.email.to_s,
           :agent_phone1 => self.owner.phone1.to_s,
           :agent_phone2 => self.owner.phone2.to_s,
-          :recent_notes => @notes.collect(&:to_hash)
+          :recent_notes => Note.recent(self,options[:role]).collect(&:to_hash)
           
       end
       # logger.info "ServiceRequest to hash returnin #{res.inspect}"
       res
   end
 
-=begin  
-  def notify_watchers
-    
-    update_watcher
-    logger.info("inside notify_owner")
-
-    return if severity > 1
-# TODO should look at all users who have the SR in their inbox
-    logger.info "watchers = #{self.watchers.inspect}"
-
-    # users = self.watchers
-    subscriptions = Subscription.for_watchers(self.watchers.collect(&:owner_id))
-    
-    logger.info "subscriptions = #{subscriptions.inspect}"
-    # find(:all, # TODO should handle multiple devices
-    # :conditions => ["user_id=? and sr_severity>=?", self.watchers.collect(&:owner_id), severity])
-    
-    subscriptions.each do |subscription|
-    # subscription = subscription.first
-      if subscription
-        devices = APN::Device.find(:all, :conditions => ["token=?", subscription.display_id])
-        if devices.empty?
-          app = APN::App.first ## TODO should look up be name
-          if app
-            devices = [APN::Device.create(:token => subscription.display_id,:app => app)]
-          end
-        end
-
-        sound_filename ='startrek_new-note.caf'
-        
-        # logger.info "escalation=#{escalation}; sound_filename =  #{sound_filename}"
-        # logger.info "devices are  #{devices.inspect}"
-
-        unless devices.empty?
-          devices.each do |device|
-            # link = {:sr_number => sr_number}
-            priority = severity_display
-            message = "SR ##{sr_number} (#{priority}) was just updated"
-            if escalation > 0
-              sound_filename = 'startrek_escalation.caf'
-              priority += " / #{escalation_display}"
-              message = "SR ##{sr_number} just got escalated to #{priority}"
-            end
-            notification = {:device => device, 
-              :badge=>subscription.badge,
-              :sound=>sound_filename, 
-              :alert=>message,
-              :custom_properties => {:sr_number => sr_number}
-            }
-            logger.info "notify_owner with  #{notification.inspect}"
-            APN::Notification.create notification
-          end
-        end
-      end
-    end
-  end
-=end
-  
-  #       iOS token =~ /^[0-9a-f\-]{71}$/
-  #       Android token =~ /^[\-\_0-9a-z]{119}$/i
-  
-  # def create_ios_notification(payload={})
-  #   
-  # end
-    
 end

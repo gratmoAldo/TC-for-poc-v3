@@ -791,6 +791,7 @@ TopTag.destroy_all
 Bookmark.destroy_all
 Site.destroy_all
 ServiceRequest.destroy_all
+ServiceRequestReadflag.destroy_all
 Note.destroy_all
 
 # reload all data

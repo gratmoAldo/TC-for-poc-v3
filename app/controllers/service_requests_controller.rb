@@ -22,7 +22,17 @@ class ServiceRequestsController < ApplicationController
         render :xml => @service_requests 
       }
       format.json  { 
-        render :json => @service_requests 
+        res = {
+          :service_requests => @service_requests.map { |sr| sr.to_hash(:role => session[:role], :user_id => session[:user_id], :format => :summary) }, 
+          :meta => {
+            :created_at => Time.now,
+            :server_name => request.server_name,
+            :user => current_user.fullname,
+            :environment => ENV["RAILS_ENV"]
+          }
+        }
+        logger.info "res = #{res.inspect}"
+        render :json => res
       }
     end
   end
@@ -118,15 +128,20 @@ class ServiceRequestsController < ApplicationController
       
       @notes = Note.recent(@service_request.id, session[:role])
       @new_note = @service_request.notes.new :created_by => current_user.id, :effort_minutes => 1, :note_type => "Research", :visibility => Note::VISIBILITY_PUBLIC
+
+      # create a flag everytime a user accesses the SR details
+      @service_request.mark_as_read_by_user(current_user)
               
       respond_to do |format|
         # format.html { render :text => request.user_agent }
-        format.html # show.html.erb
+        format.html {
+          
+        }# show.html.erb
         format.mobile #{ render :text => request.user_agent }
         format.xml  { render :xml => @service_request }
         format.json { 
           res = {
-            :service_request => @service_request.to_hash(:role => session[:role], :user_id => session[:user_id], :format => :complete),
+            :service_request => @service_request.to_hash(:role => session[:role], :user_id => current_user.id, :format => :complete),
             :meta => {
               :created_at => Time.now,
               :server_name => request.server_name,

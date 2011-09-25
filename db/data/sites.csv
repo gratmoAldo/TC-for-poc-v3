@@ -1,7 +1,7 @@
 name,address,country,site_id,account_number,created_at,updated_at
-"SINKYO FARMA CORP","6802 Koll Center Parkway, Pleasanton, CA 94566","US","123","98765","2011-04-13 22:07:36","2011-04-13 22:07:36"
-"Amtech Microelectronics Inc.","6541 Vía Del Oro, San Jose, CA 95119","US","5555","887766","2011-04-15 19:26:55","2011-04-15 19:26:55"
-"Bank of America","100 North Tryon Street, Charlotte, NC 28202","US","3322","88355","2011-04-15 19:28:21","2011-04-15 19:28:21"
-"International Products Ltd","4324 Spring Lane, Harrison Township, MI 48045","US","7654","88355","2011-04-15 19:28:21","2011-04-15 19:28:21"
-"Priority Consulting Inc.","2356 El Camino Real, Stanford, CA","US","1144","86211","2011-04-16 19:28:21","2011-04-16 19:28:21"
-"Acme Data Service","123 Main Street","New York, NY","US","4255","98473","2011-04-17 19:28:21","2011-04-17 19:28:21"
+SINKYO FARMA CORP,"6802 Koll Center Parkway, Pleasanton, CA 94566",US,123,98765,4/13/2011 22:07,4/13/2011 22:07
+Amtech Microelectronics Inc.,"6541 Vía Del Oro, San Jose, CA 95119",US,5555,887766,4/15/2011 19:26,4/15/2011 19:26
+Bank of America,"100 North Tryon Street, Charlotte, NC 28202",US,3322,88355,4/15/2011 19:28,4/15/2011 19:28
+International Products Ltd,"4324 Spring Lane, Harrison Township, MI 48045",US,7654,88355,4/15/2011 19:28,4/15/2011 19:28
+Priority Consulting Inc.,"2356 El Camino Real, Stanford, CA",US,1144,86211,4/16/2011 19:28,4/16/2011 19:28
+Acme Data Service,"881 7th Ave, New York NY 10019",US,4255,98473,4/17/2011 19:28,4/17/2011 19:28

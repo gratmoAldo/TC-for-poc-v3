@@ -1,0 +1,95 @@
+sr_number,created_by,visibility,effort_minutes,note_type,created_at,updated_at,body
+40289104,charlie,Public,1,Web Update,"April 12, 2011 1:46 PM","April 12, 2011 1:46 PM","***SERVICE REQUEST OPENED Tuesday Apr 12 04:46:22 EDT 2011***
+CONTACT INFORMATION
+
+------------------------------------
+
+<<Service Request Contact>>
+Name: Charlie,Hawk
+Email: charlie.hawk@bofa.com
+Primary Phone: 234-567-1031
+Alternate Phone: 111-222-3344
+Alternate Email: contentmanagement@bofa.com
+
+
+Contact Method: Email"
+40289104,charlie,Public,1,Problem Description,"April 12, 2011 1:46 PM","April 12, 2011 1:46 PM","PROBLEM DESCRIPTION:
+------------------------------------
+When users in our Tokyo office attempt to access data in Nayworker, they receive a 'Message Viewer: Nayviewer succeeded' screen, but are never able to open the document. Users are able to successfully export and view documents, the issue only arises when attempting to open the document from the application.
+
+BUSINESS IMPACT: 
+------------------------------------
+Nayworker operating from on Windows Server 2003. The local client machine is operating Windows XP with Japanese set as the primary language. 
+
+ENVIRONMENT INFORMATION
+------------------------------------
+<<Product Information>>
+Product: Nayworker
+Version: 5.3 SP2"
+40289104,system,Public,1,Administrative,"April 12, 2011 1:47 PM","April 12, 2011 1:47 PM","Entitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | IIG_Web_Software_Rules | Select_SW_Product_Ruleset | IIG_Web_Software_RulesKeyword | getMatchResultRule | keyword_Ruleset | no keyword match result is returned for IIG_Web probably because no keywords are defined.Product | Default_IIG_Web_Rule | Select_SW_Product_Ruleset | nothing was found in the product specific rules default to the following queue:100063461Entitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | IIG_Web_Software_Rules | Select_SW_Product_Ruleset | IIG_Web_Software_RulesKeyword | getMatchResultRule | keyword_Ruleset | no keyword match result is returned for IIG_Web probably because no keywords are defined.Product | Default_IIG_Web_Rule | Select_SW_Product_Ruleset | nothing was found in the product specific rules default to the following queue:100063461"
+40289104,system,Public,1,Notification Sent,"April 12, 2011 1:48 PM","April 12, 2011 1:48 PM","Notification Sent: Service Request # 40289104: 'Users unable to access documents in Nayworker 2.3' has been opened against Site # 420212 by Charlie Hawk.
+Thank you,
+CME Customer Service
+CME Web Support - the fastest and easiest way to get solutions and answers http://www.cme.com/support
+Contact CME: http://www.cme.com/contact
+Privacy Policy: http://www.cme.com/site/privacy
+Do not Reply to this E-mail
+Recipients: charlie.hawk@bofa.com"
+40289104,sameer,Public,6,Initial Response,"April 12, 2011 1:58 PM","April 12, 2011 1:58 PM","Hello Charlie,
+We are in the receipt of your service request. Please confirm the version of Nayworker that you are using.
+
+Thanks,
+-Sameer"
+41018446,system,Public,14,Chat,"Jun 02, 2011 2:58 PM","Jun 02, 2011 2:58 PM","Chat session closed and added as a related object."
+41018446,system,Public,1,Web Update,"Jun 02, 2011 2:58 PM","Jun 02, 2011 2:58 PM","***SERVICE REQUEST OPENED Tuesday Apr 13 07:58:24 EDT 2011***
+CONTACT INFORMATION
+
+------------------------------------
+
+<<Service Request Contact>>
+Name: Charlie,Hawk
+Email: charlie.hawk@bofa.com
+Primary Phone: 234-567-1031
+Alternate Phone: 111-222-3344
+Alternate Email: contentmanagement@bofa.com
+
+
+Contact Method: Email"
+41018446,system,Public,1,Problem Description,"Jun 02, 2011 2:58 PM","Jun 02, 2011 2:58 PM","PROBLEM DESCRIPTION:
+------------------------------------
+We have deployed an application were all users validate against LDAP Server (Sun Java System Directory Server 5.2). We have synchronized the users into the server.
+There is a 25-40% ""Authentication Failed"" responses.
+
+We have activated trace authentication at the server level. Please see the attached server.log, for examples of correct and failed authentication scenarios.
+
+
+BUSINESS IMPACT: 
+------------------------------------
+Customer very unhappy.
+Users can't access the application. Other have to attempt several times until they gather access.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+<<Product Information>>
+Product: CME Crayiion 300-B
+Version: Model 300-B
+"
+40987661,system,Internal,1,Research,"April 15, 2011 2:58 PM","April 15, 2011 2:58 PM","
+############
+
+Hello Charlie,
+
+I think I found the solution: since you mentioned that you have a NetApp device connected to your network, all you need to do is disconnect that device and reboot your EMC device and you should be golden.
+
+Should you have any question or concern, please do not hesitate to contact me.
+
+Kind regards,
+-Sameer
+
+############
+"
+40320146,system,Public,1,Administrative,"April 10, 2011 11:16 AM","April 10, 2011 11:16 AM","***SERVICE REQUEST OPENED***"
+40387219,system,Public,1,Administrative,"April 15, 2011 07:03 AM","April 15, 2011 07:03 AM","***SERVICE REQUEST OPENED***"
+40987654,system,Public,1,Administrative,"April 14, 2011 11:17 AM","April 14, 2011 11:17 AM","***SERVICE REQUEST OPENED***"
+40987655,system,Public,1,Administrative,"April 14, 2011 11:18 AM","April 14, 2011 11:18 AM","***SERVICE REQUEST OPENED***"
+40987661,system,Public,1,Administrative,"April 14, 2011 11:19 AM","April 14, 2011 11:19 AM","***SERVICE REQUEST OPENED***"

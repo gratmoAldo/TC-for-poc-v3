@@ -1,5 +1,5 @@
 id,sr_number,title,severity,status,product,description,created_at,updated_at,next_action_at,site,contact,escalation,owner
-1,40320146,Mysterious mc_deleted_8101becea8005b503 mc_user,2,Open - Customer Action Required,Connect Server 5.3 SP4,"PROBLEM DESCRIPTION:
+"1","40320146","Mysterious mc_deleted_8101becea8005b503 mc_user","2","Open - Customer Action Required","Connect Server 5.3 SP4","PROBLEM DESCRIPTION:
 ------------------------------------
 Our connect checker picked up several names and locations that point to a user called...
 mc_deleted_8101becea8005b503   (among others)
@@ -37,8 +37,8 @@ ENVIRONMENT INFORMATION
 ------------------------------------
 >
 Product: Connect Server
-Version: 5.3 SP4",4/10/2011 11:16,4/27/2011 15:39,4/10/2011 17:17,"4255","charlie",0,sameer
-2,41018446,Authentication against LDAP Directory failure,2,Open - Customer Action Required,CME Crayiion 300-B,"PROBLEM DESCRIPTION:
+Version: 5.3 SP4","2011-04-10 11:16:47","2011-04-27 15:39:40","2011-04-10 17:17:00","3322","charlie","0","sameer"
+"2","41018446","Authentication against LDAP Directory failure","2","Open - Customer Action Required","CME Crayiion 300-B","PROBLEM DESCRIPTION:
 ------------------------------------
 We have deployed an application were all users validate against LDAP Server (Sun Java System Directory Server 5.2). We have synchronized the users into the connect server.
 There is a 25-40% ""Authentication Failed"" responses.
@@ -66,8 +66,8 @@ Database: ORACLE
 Database Version: 10.2.0.4
 Web Server: 0
 Application Server: BEAWL
-Client UI: 0",4/17/2011 11:58,6/2/2011 15:34,6/2/2011 14:57,"4255","charlie",0,sameer
-3,40289104,Users unable to access documents in Nayworker 2.3 ,3,Open - Customer Action Required,Nayworker 2.3,"PROBLEM DESCRIPTION:
+Client UI: 0","2011-04-17 11:58:24","2011-06-02 15:34:07","2011-06-02 14:57:00","3322","charlie","0","sameer"
+"3","40289104","Users unable to access documents in Nayworker 2.3 ","3","Open - Customer Action Required","Nayworker 2.3","PROBLEM DESCRIPTION:
 ------------------------------------
 When users in our Tokyo office attempt to access data in Nayworker, they receive a 'Message Viewer: Nayviewer succeeded' screen, but are never able to open the document. Users are able to successfully export and view documents, the issue only arises when attempting to open the document from the application.
 
@@ -80,8 +80,8 @@ ENVIRONMENT INFORMATION
 <<Product Information>>  
 Product: Nayworker
 Version: 5.3 SP2
-",4/13/2011 10:49,4/18/2011 20:21,4/13/2011 10:45,"4255","charlie",0,mark
-4,40987654,How to disable caching in development server?,3,Open - Customer Action Required,Connect Server 5.3 SP4,"PROBLEM DESCRIPTION:
+","2011-04-13 10:49:21","2011-04-18 20:21:57","2011-04-13 10:45:00","3322","charlie","0","mark"
+"4","40987654","How to disable caching in development server?","3","Open - Customer Action Required","Connect Server 5.3 SP4","PROBLEM DESCRIPTION:
 ------------------------------------
 We are testing custom workflow and would like to disable the global cache. There is no such option in the Administrator or any mention in the documentation.
 
@@ -94,10 +94,10 @@ ENVIRONMENT INFORMATION
 >
 Product: Connect Server
 Version: 5.3 SP4
-",4/14/2011 11:17,4/27/2011 15:34,4/14/2011 11:16,"4255","charlie",0,sameer
-5,40987655,Getting 'nw-9102: DNS error' when configuring new node,3,Open - Support Researching,Nayworker 2.5,Please help. I am configuring a new node and getting an error.,4/14/2011 11:18,4/26/2011 10:58,4/14/2011 11:17,"4255","charlie",0,herve
-6,40987661,Getting errors trying to clone from expired save sets,2,Open - Support Researching,Nayworker 2.5,Problem is impacting our production system and threatening our project time line.,4/14/2011 11:19,4/25/2011 17:03,4/14/2011 11:18,3322,terry,0,sameer
-7,40387219,Some batches are still pending for export,4,Open - Support Researching,Accelor 1.3 SP1,"PROBLEM DESCRIPTION:
+","2011-04-14 11:17:00","2011-04-27 15:34:34","2011-04-14 11:16:00","3322","charlie","0","sameer"
+"5","40987655","Getting 'nw-9102: DNS error' when configuring new node","3","Open - Support Researching","Nayworker 2.5","Please help. I am configuring a new node and getting an error.","2011-04-14 11:18:05","2011-04-26 10:58:19","2011-04-14 11:17:00","3322","charlie","0","herve"
+"6","40987661","Getting errors trying to clone from expired save sets","4","Open - Support Researching","Nayworker 2.5","Problem is impacting our production system and threatening our project time line.","2011-04-14 11:19:23","2011-04-25 17:03:04","2011-04-14 11:18:00","3322","terry","0","sameer"
+"7","40387219","Some batches are still pending for export","4","Open - Support Researching","Accelor 1.3 SP1","PROBLEM DESCRIPTION:
 ------------------------------------
 Some batches are still pending for export.
 
@@ -105,5 +105,4 @@ ENVIRONMENT INFORMATION
 ------------------------------------
 >
 Product: Accelor
-Version: 1.3 SP1",4/15/2011 7:03,4/15/2011 18:21,4/15/2011 13:18,"4255","charlie",0,radjesh
-8,40988538,WIN: system performance is tanking from 7:30-8:00 am and PM each day,3,Open - Cust. Action Req. ,CME Crayiion 300-B,ComptrolCentor - Perf Supervisor - Zion,8/29/2011 15:11,9/26/2011 21:52,9/28/2011 21:52,4255,charlie,0,sameer
+Version: 1.3 SP1","2011-04-15 7:3:34","2011-04-15 18:21:04","2011-04-15 13:18:00","3322","charlie","0","radjesh"
