@@ -354,35 +354,32 @@ EMC Customer Service"
 40988538,sameer,Public,1,Action Plan,9/3/2011 10:54,9/3/2011 10:54,Queued to 52530 CM CS District Triage..........CST
 40988538,sameer,Public,27,Web Update,9/3/2011 10:56,9/3/2011 10:56,Need EMC Grab to analyze
 40988538,sameer,Public,1,Field Service Update,9/3/2011 12:29,9/3/2011 12:29,EMC Grab in progress
-40988538,system,Public,1,Administrative,9/4/2011 15:11,9/4/2011 15:11,***STATUS NOTIFICATION***
-40988538,system,Public,1,Administrative,9/4/2011 15:12,9/4/2011 15:12,"PROBLEM DESCRIPTION:
+40988538,system,Public,1,Administrative,9/7/2011 15:12,9/7/2011 15:12,"PROBLEM DESCRIPTION:
 ------------------------------------
 still an issue
 
 BUSINESS IMPACT:
 ------------------------------------
 business degraded"
-40988538,sameer,Public,2,Web Update,9/4/2011 15:13,9/4/2011 15:13,"Entitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | Zion_Software_Rules | Select_SW_Product_Ruleset | Zion_Software_RulesKeyword | keywordWeightRule | keyword_Ruleset | ""oracle""[75] (Zion Upg_Infra) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=75 (Zion Upg_Infra)Keyword | keywordWeightRule | keyword_Ruleset | ""performance manager""[75] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""reports""[50] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=125 (Zion Reporting_Perf)Keyword | keywordWeightRule | keyword_Ruleset | ""hba""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""host""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""dmx""[25] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""emulex""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=175 (Zion HW_Discovery)Product | SG39_100063458_Rule | ZionSkillsetQueueMapping_rs | Skillgroup #39 is mapped to Queue #100063458 Queue Name = Zion SRM HWDISCEntitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | Zion_Software_Rules | Select_SW_Product_Ruleset | Zion_Software_RulesKeyword | keywordWeightRule | keyword_Ruleset | ""oracle""[75] (Zion Upg_Infra) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=75 (Zion Upg_Infra)Keyword | keywordWeightRule | keyword_Ruleset | ""performance manager""[75] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""reports""[50] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=125 (Zion Reporting_Perf)Keyword | keywordWeightRule | keyword_Ruleset | ""hba""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""host""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""dmx""[25] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""emulex""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=175 (Zion HW_Discovery)Product | SG39_100063458_Rule | ZionSkillsetQueueMapping_rs | Skillgroup #39 is mapped to Queue #100063458 Queue Name = Zion SRM HWDISC"
-40988538,sameer,Public,5,IP Notification,9/4/2011 15:15,9/4/2011 15:15,Attachment RF3PDB172N1_Mon0829_0308PM_EMCRPTv37_X64.zip has been added to Service Request ID 40988538
-40988538,system,Public,1,Notification Sent,9/4/2011 15:16,9/4/2011 15:16,"Notification Sent:Service Request # 40988538 : ""system performance is tanking from 7:30-8:00 am and PM each day"" has been opened against Customer # 1875169 by ""Mr. Joe Smith"" with severity S2"
-40988538,sameer,Public,2,Initial Response,9/4/2011 17:06,9/4/2011 17:06,"I have read and understand all site messages and am actively working this Service Request.
+40988538,sameer,Public,2,Web Update,9/7/2011 15:13,9/7/2011 15:13,"Entitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | Zion_Software_Rules | Select_SW_Product_Ruleset | Zion_Software_RulesKeyword | keywordWeightRule | keyword_Ruleset | ""oracle""[75] (Zion Upg_Infra) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=75 (Zion Upg_Infra)Keyword | keywordWeightRule | keyword_Ruleset | ""performance manager""[75] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""reports""[50] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=125 (Zion Reporting_Perf)Keyword | keywordWeightRule | keyword_Ruleset | ""hba""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""host""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""dmx""[25] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""emulex""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=175 (Zion HW_Discovery)Product | SG39_100063458_Rule | ZionSkillsetQueueMapping_rs | Skillgroup #39 is mapped to Queue #100063458 Queue Name = Zion SRM HWDISCEntitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | Zion_Software_Rules | Select_SW_Product_Ruleset | Zion_Software_RulesKeyword | keywordWeightRule | keyword_Ruleset | ""oracle""[75] (Zion Upg_Infra) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=75 (Zion Upg_Infra)Keyword | keywordWeightRule | keyword_Ruleset | ""performance manager""[75] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""reports""[50] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=125 (Zion Reporting_Perf)Keyword | keywordWeightRule | keyword_Ruleset | ""hba""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""host""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""dmx""[25] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""emulex""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=175 (Zion HW_Discovery)Product | SG39_100063458_Rule | ZionSkillsetQueueMapping_rs | Skillgroup #39 is mapped to Queue #100063458 Queue Name = Zion SRM HWDISC"
+40988538,sameer,Public,2,Initial Response,9/7/2011 17:06,9/7/2011 17:06,"I have read and understand all site messages and am actively working this Service Request.
 
 
 Next Steps: Accepted SR. I will review SR and respond with next steps
 
 "
-40988538,sameer,Public,24,Research,9/4/2011 18:15,9/4/2011 18:15,"SR SET Update Text
+40988538,sameer,Public,24,Research,9/7/2011 18:15,9/7/2011 18:15,"SR SET Update Text
 
 
 ******************************************************
 Summary - Latest synopsis of investigation
 ******************************************************
 Under Review."
-40988538,sameer,Public,3,Action Plan,9/4/2011 19:00,9/4/2011 19:00,Checked with colleague.....Windows issue....SR can be re-queued.
-40988538,sameer,Public,1,Initial Response,9/4/2011 23:24,9/4/2011 23:24,"I have read and understand all site messages and am actively working this Service Request.
+40988538,sameer,Public,3,Action Plan,9/7/2011 19:00,9/7/2011 19:00,Checked with colleague.....Windows issue....SR can be re-queued.
+40988538,sameer,Public,1,Initial Response,9/7/2011 23:24,9/7/2011 23:24,"I have read and understand all site messages and am actively working this Service Request.
 
 "
-40988538,sameer,Public,15,Sent Email,9/4/2011 23:45,9/4/2011 23:45,"Conclusion
+40988538,sameer,Public,15,Sent Email,9/7/2011 23:45,9/7/2011 23:45,"Conclusion
 Add logs
 
 ******************************************************
@@ -460,6 +457,9 @@ Next Steps"
 Please click ""here"" to view the case details in EMC Web Support.
 Thank you,
 EMC Customer Service"
+40988538,system,Public,1,Administrative,9/4/2011 15:11,9/4/2011 15:11,***STATUS NOTIFICATION***
+40988538,sameer,Public,5,IP Notification,9/4/2011 15:15,9/4/2011 15:15,Attachment RF3PDB172N1_Mon0829_0308PM_EMCRPTv37_X64.zip has been added to Service Request ID 40988538
+40988538,system,Public,1,Notification Sent,9/4/2011 15:16,9/4/2011 15:16,"Notification Sent:Service Request # 40988538 : ""system performance is tanking from 7:30-8:00 am and PM each day"" has been opened against Customer # 1875169 by ""Mr. Joe Smith"" with severity S2"
 40988538,sameer,Public,5,Action Plan,9/18/2011 9:37,9/18/2011 9:37,SAM  called in......need to call back
 40988538,sameer,Public,1,Disp Notification,9/21/2011 10:52,9/21/2011 10:52,Reason for Dispatch:Oracle server is having performance issue
 40988538,system,Public,1,Administrative,9/22/2011 10:53,9/22/2011 10:53,Customers Contract Status: Premium

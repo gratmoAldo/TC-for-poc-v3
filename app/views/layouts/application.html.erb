@@ -48,6 +48,9 @@
 					<li>
 						<%= link_to_unless_current "Console", console_path %>
 					</li>
+					<li>
+						<%= link_to_unless_current "Reset", reset_path %>
+					</li>
 					<% elsif logged_in? %>
 					<li>
 						<%= link_to_unless_current "My Inbox", myinbox_path %>

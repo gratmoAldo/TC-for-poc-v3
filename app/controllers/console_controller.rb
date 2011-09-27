@@ -47,4 +47,11 @@ class ConsoleController < ApplicationController
       # format.json  { render :json => @subscriptions }
     end
   end
+  
+  def reset
+    ServiceRequestReadflag.destroy_all
+    flash[:notice] = "All read / unread flags have been reset."
+    
+    redirect_to root_url    
+  end
 end

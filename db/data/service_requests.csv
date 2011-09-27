@@ -81,7 +81,7 @@ ENVIRONMENT INFORMATION
 Product: Nayworker
 Version: 5.3 SP2
 ",4/13/2011 10:49,4/18/2011 20:21,4/13/2011 10:45,"4255","charlie",0,mark
-4,40987654,How to disable caching in development server?,3,Open - Customer Action Required,Connect Server 5.3 SP4,"PROBLEM DESCRIPTION:
+4,40987654,How to disable caching in development server?,4,Open - Customer Action Required,Connect Server 5.3 SP4,"PROBLEM DESCRIPTION:
 ------------------------------------
 We are testing custom workflow and would like to disable the global cache. There is no such option in the Administrator or any mention in the documentation.
 
@@ -95,8 +95,8 @@ ENVIRONMENT INFORMATION
 Product: Connect Server
 Version: 5.3 SP4
 ",4/14/2011 11:17,4/27/2011 15:34,4/14/2011 11:16,"4255","charlie",0,sameer
-5,40987655,Getting 'nw-9102: DNS error' when configuring new node,3,Open - Support Researching,Nayworker 2.5,Please help. I am configuring a new node and getting an error.,4/14/2011 11:18,4/26/2011 10:58,4/14/2011 11:17,"4255","charlie",0,herve
-6,40987661,Getting errors trying to clone from expired save sets,2,Open - Support Researching,Nayworker 2.5,Problem is impacting our production system and threatening our project time line.,4/14/2011 11:19,4/25/2011 17:03,4/14/2011 11:18,3322,terry,0,sameer
+5,40987655,Getting 'nw-9102: DNS error' when configuring new node,1,Open - Support Researching,Nayworker 2.5,Please help. I am configuring a new node and getting an error.,4/14/2011 11:18,4/26/2011 10:58,4/14/2011 11:17,"4255","charlie",2,herve
+6,40987661,Getting errors trying to clone from expired save sets,2,Open - Support Researching,Nayworker 2.5,Problem is impacting our production system and threatening our project time line.,4/14/2011 11:19,4/25/2011 17:03,4/14/2011 11:18,4255,terry,0,sameer
 7,40387219,Some batches are still pending for export,4,Open - Support Researching,Accelor 1.3 SP1,"PROBLEM DESCRIPTION:
 ------------------------------------
 Some batches are still pending for export.
