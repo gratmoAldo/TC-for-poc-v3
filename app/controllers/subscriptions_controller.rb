@@ -81,7 +81,7 @@ class SubscriptionsController < ApplicationController
     if display_id =~ /^[0-9a-f\-]{71}$/ # APN format
       notification_method = 'apn'
       display_id = display_id.gsub('-', ' ') # massage the id a bit
-    elsif display_id =~ /^[\-\_0-9a-z]{119}$/i # C2DM format
+    elsif display_id =~ /^[\-\_0-9a-z]{110,180}$/i # C2DM format
       notification_method = 'c2dm'
     else
       notification_method = nil # that's an invalid display_id

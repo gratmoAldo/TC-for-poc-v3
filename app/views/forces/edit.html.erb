@@ -17,10 +17,9 @@
     <%= f.text_field :authorization, :size => 150, :style => 'color:red' %>
   </p>
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Update' %> |
+	<%= link_to 'Cancel', force_path(1) %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @force %> |
-<%= link_to 'Cancel', force_path(1) %>
 </div>
