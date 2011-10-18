@@ -1,0 +1,26 @@
+<% title "Editing Force.com Session" %>
+<div class='first-pane'>
+	<h1>Editing Force.com Session</h1>
+</div>
+<div class='pane'>
+
+<% form_for(@force) do |f| %>
+  <%= f.error_messages %>
+
+  <!-- <p>
+    <%= f.label :serverBase %><br />
+    <%= f.text_field :serverBase, :size => 100, :style => 'font-size: 1.1em' %>
+  </p> -->
+
+  <p>
+    <%= f.label :authorization %><br />
+    <%= f.text_field :authorization, :size => 150, :style => 'color:red' %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @force %> |
+<%= link_to 'Cancel', force_path(1) %>
+</div>

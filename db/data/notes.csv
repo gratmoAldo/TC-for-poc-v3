@@ -417,7 +417,7 @@ BUSINESS IMPACT:
 business degraded"
 40988538,sameer,Public,2,Web Update,9/6/2011 15:13,9/6/2011 15:13,"Entitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | Zion_Software_Rules | Select_SW_Product_Ruleset | Zion_Software_RulesKeyword | keywordWeightRule | keyword_Ruleset | ""oracle""[75] (Zion Upg_Infra) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=75 (Zion Upg_Infra)Keyword | keywordWeightRule | keyword_Ruleset | ""performance manager""[75] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""reports""[50] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=125 (Zion Reporting_Perf)Keyword | keywordWeightRule | keyword_Ruleset | ""hba""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""host""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""dmx""[25] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""emulex""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=175 (Zion HW_Discovery)Product | SG39_100063458_Rule | ZionSkillsetQueueMapping_rs | Skillgroup #39 is mapped to Queue #100063458 Queue Name = Zion SRM HWDISCEntitlement | SW_Entitlement_Passed_Rule | SW_Entitlement_Rules | SW Entitlement PassedProduct | Zion_Software_Rules | Select_SW_Product_Ruleset | Zion_Software_RulesKeyword | keywordWeightRule | keyword_Ruleset | ""oracle""[75] (Zion Upg_Infra) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=75 (Zion Upg_Infra)Keyword | keywordWeightRule | keyword_Ruleset | ""performance manager""[75] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""reports""[50] (Zion Reporting_Perf) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=125 (Zion Reporting_Perf)Keyword | keywordWeightRule | keyword_Ruleset | ""hba""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""host""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""dmx""[25] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | ""emulex""[50] (Zion HW_Discovery) in field ""Problem Description""Keyword | keywordWeightRule | keyword_Ruleset | sum=175 (Zion HW_Discovery)Product | SG39_100063458_Rule | ZionSkillsetQueueMapping_rs | Skillgroup #39 is mapped to Queue #100063458 Queue Name = Zion SRM HWDISC"
 40988538,sameer,Public,5,IP Notification,9/6/2011 15:15,9/6/2011 15:15,Attachment RF3PDB172N1_Mon0829_0308PM_EMCRPTv37_X64.zip has been added to Service Request ID 40988538
-40988538,system,Public,1,Notification Sent,9/6/2011 15:16,9/6/2011 15:16,"Notification Sent:Service Request # 40988538 : ""system performance is tanking from 7:30-8:00 am and PM each day"" has been opened against Customer # 1875169 by ""Mr. Joe Smith"" with severity S2"
+40988538,system,Public,1,Notification Sent,10/4/2011 15:16,9/6/2011 15:16,"Notification Sent:Service Request # 40988538 : ""system performance is tanking from 7:30-8:00 am and PM each day"" has been opened against Customer # 1875169 by ""Mr. Joe Smith"" with severity S2"
 40988538,sameer,Public,2,Initial Response,9/6/2011 17:06,9/6/2011 17:06,"I have read and understand all site messages and am actively working this Service Request.
 
 
@@ -449,20 +449,95 @@ One node of the cluster has EMCReports attached to SR
 Reason for Transition: EOS
 Current Business Impact: moderate
 Issue Description: Performance issue between 7:30-8:00am"
-40988538,sameer,Public,1,Initial Response,9/14/2011 9:07,9/14/2011 9:07,"Current Business Impact
+40988538,sameer,Public,1,Initial Response,10/4/2011 9:07,9/14/2011 9:07,"Current Business Impact
 Actions Taken-Accepted
 Next Steps"
 40988538,sameer,Public,2,Web Update,9/15/2011 9:10,9/15/2011 9:10,Attachment supportsave_D1D_Fabric_3_08302011.zip has been added to Service Request ID 40988538
-40988538,system,Public,1,Notification Sent,9/15/2011 9:14,9/15/2011 9:14,"Service Request ID 40988538
+40988538,system,Public,1,Notification Sent,10/5/2011 9:14,9/15/2011 9:14,"Service Request ID 40988538
 Please click ""here"" to view the case details in EMC Web Support.
 Thank you,
 EMC Customer Service"
-40988538,system,Public,1,Administrative,9/4/2011 15:11,9/4/2011 15:11,***STATUS NOTIFICATION***
-40988538,sameer,Public,5,IP Notification,9/4/2011 15:15,9/4/2011 15:15,Attachment RF3PDB172N1_Mon0829_0308PM_EMCRPTv37_X64.zip has been added to Service Request ID 40988538
-40988538,system,Public,1,Notification Sent,9/7/2011 15:16,9/7/2011 15:16,"Notification Sent:Service Request # 40988538 : ""system performance is tanking from 7:30-8:00 am and PM each day"" has been opened against Customer # 1875169 by ""Mr. Joe Smith"" with severity S2"
+40988538,system,Public,1,Administrative,10/4/2011 15:11,9/4/2011 15:11,***STATUS NOTIFICATION***
+40988538,sameer,Public,5,IP Notification,10/7/2011 15:15,9/4/2011 15:15,Attachment RF3PDB172N1_Mon0829_0308PM_EMCRPTv37_X64.zip has been added to Service Request ID 40988538
+40988538,system,Public,1,Notification Sent,10/5/2011 15:16,9/7/2011 15:16,"Notification Sent:Service Request # 40988538 : ""system performance is tanking from 7:30-8:00 am and PM each day"" has been opened against Customer # 1875169 by ""Mr. Joe Smith"" with severity S2"
 40988538,sameer,Public,5,Action Plan,9/18/2011 9:37,9/18/2011 9:37,SAM  called in......need to call back
 40988538,sameer,Public,1,Disp Notification,9/21/2011 10:52,9/21/2011 10:52,Reason for Dispatch:Oracle server is having performance issue
 40988538,system,Public,1,Administrative,9/22/2011 10:53,9/22/2011 10:53,Customers Contract Status: Premium
 40988538,sameer,Public,1,Action Plan,9/23/2011 10:54,9/23/2011 10:54,Queued to 52530 CM CS District Triage..........CST
 40988538,sameer,Public,27,Web Update,9/26/2011 10:56,9/26/2011 10:56,Need EMC Grab to analyze
 40988538,sameer,Public,1,Field Service Update,9/26/2011 12:29,9/26/2011 12:29,EMC Grab in progress
+43620084,system,Public,1,Web Update,10/4/2011 15:55,10/4/2011 15:55,"***SERVICE REQUEST OPENED Tuesday Oct 04 06:55:36 EDT 2011***
+CONTACT INFORMATION
+
+------------------------------------
+
+<<Service Request Contact>>
+Name: Terry Wilson
+Email: terry.wilson@acme.com
+Primary Phone: 234-567-1015
+
+
+Contact Method: Email"
+43620084,system,Internal,1,Problem Description,10/4/2011 15:55,10/4/2011 15:55,"PROBLEM DESCRIPTION:
+------------------------------------
+Folks we are encountering the following error while doing an import or a document check in is what it is called here. I can only provide limited information right now. I've scanned the articles  and files but nothing is completely like what I'm seeing here.
+Error encounterd:
+
+invokeMethod() failed while calling: onOK
+class com.copumentum.web.contentxfer.ucf.UcfSessionManager$ClientException
+
+Thank you for any assistance you can provide.
+
+BUSINESS IMPACT: 
+------------------------------------
+We are running host OS windows XP on the client side and 2003 on the server.
+Running 3.0 Version of Copumentum.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Webcop
+Version: 3.0"
+43620084,system,Internal,1,Administrative,10/4/2011 15:56,10/4/2011 15:56,"Entitlement | OMG_Devtools_Notification | SW_Entitlement_Rules | OMG Devtools notification sentEntitlement | OMG-DevTools_Override | SW_Entitlement_Rules | OMGDevTools Gets Enhanced overrideProduct | OMG_DevTools_Software_Rules | Select_SW_Product_Ruleset | OMG_DevTools_Software_RulesKeyword | getMatchResultRule | keyword_Ruleset | no keyword match result is returned for OMG_DevTools probably because no keywords are defined.Product | Default_OMG_DevTools_Rule | Select_SW_Product_Ruleset | nothing was found in the product specific rules default to the following queue:100063459 Queue Name = CTM DEVTOOLSEntitlement | OMG_Devtools_Notification | SW_Entitlement_Rules | OMG Devtools notification sentEntitlement | OMG-DevTools_Override | SW_Entitlement_Rules | OMGDevTools Gets Enhanced overrideProduct | OMG_DevTools_Software_Rules | Select_SW_Product_Ruleset | OMG_DevTools_Software_RulesKeyword | getMatchResultRule | keyword_Ruleset | no keyword match result is returned for OMG_DevTools probably because no keywords are defined.Product | Default_OMG_DevTools_Rule | Select_SW_Product_Ruleset | nothing was found in the product specific rules default to the following queue:100063459 Queue Name = CTM DEVTOOLS
+"
+43620084,radjesh,Internal,5,Administrative,10/4/2011 15:58,10/4/2011 15:58,"CST Web Services Update
+18:58:17 10/4/2011
+
+RSO notification received by CST Web Services team, no action required.
+"
+43620084,radjesh,Internal,12,Notification Sent,10/4/2011 15:59,10/4/2011 15:59,"Notification Sent: Service Request # 43620084: "" invokeMethod() failed while calling: onOK "" has been opened against Site # 178330 by Terry Wilson.
+Please click ""here"" to view the case details in EMC Web Support.
+Thank you,
+Customer Service
+CME Web Support - the fastest and easiest way to get solutions and answers http://support.cme.com/support/index.jhtml
+Contact CME: http://www.cme.com/contact
+Privacy Policy: http://www.cme.com/site/privacy.jsp
+Do not Reply to this E-mail
+Recipients: terry.wilson@acme.com
+"
+43620084,radjesh,Public,9,Initial Response,10/4/2011 16:46,10/4/2011 16:46,"INITIAL RESPONSE:
+
+Hello Terry,
+
+Ill be working with you on this SR. Can you please provide the following information?
+
+-Application server logs
+-Is this happening to all users?
+-Are you running Webcop or TFS?
+-Have you tried restarting the application server?
+
+Im available from 9am-6pm if you would like to schedule a webex meeting so we can look at the schedule.
+
+Kind regards,
+
+Radjesh Vashisht
+Technical Support Engineer
+Worldwide Technical Support Fraud & Intelligence Group
+
+Office Phone: 999-555-1247
+Support Hotline: 800.000.1234
+Email: radjesh.vashisht@emc.com
+Office Hours: M-F, 9:00am-6:00pm PST (-8:00)
+
+Please let us know what you think of the level of service provided by sending an email to my manager, 
+Mark A. admin3@emc.com"

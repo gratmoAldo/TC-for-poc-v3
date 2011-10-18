@@ -434,6 +434,71 @@ def self.load_sites(file)
     end
   end
 end
+
+def self.load_site_messages(file)
+  puts "Loading Site Messages..."
+
+  header=nil
+  created_at = 1.hour.ago
+  FasterCSV.foreach(file) do |row|
+    if header.nil?
+      header = row 
+    else
+      new_sm_attr = {}
+      invalid_record = false
+
+      header.each_with_index do |h,i|
+
+        case h
+        when "created_by"
+          user = User.find_by_username(row[i])
+          if user
+            new_sm_attr["created_by"] = user.id
+          else
+            puts "** Skipping site message created by #{row[i]}: User not found"
+            invalid_record = true
+          end
+        when "site_id"
+          site = Site.find_by_site_id(row[i])
+          if site
+            new_sm_attr["site_id"] = site.id
+          else
+            puts "** Skipping site message for site id #{row[i]}: Site now found"
+            invalid_record = true
+          end
+        when "created_at"
+          # puts "setting created_at to #{row[i]}"
+          # new_note_attr["updated_at"] = row[i]
+          created_at = row[i]
+          # new_note_attr["created_at"] = row[i]
+        else
+          new_sm_attr[h.to_sym] = row[i] unless row[i].nil?
+        end
+      end
+
+      # puts "before creating note #{new_sm_attr.inspect}"
+      sm = SiteMessage.create! new_sm_attr unless invalid_record
+
+      sm[:created_at] = created_at
+      sm[:updated_at] = created_at
+      # puts "after creating note #{note.inspect}"
+
+      # handle attributes blocked from mass-assignment
+      # %w( reputation is_admin access_level is_deleted ).each do |attr|
+      #   user[attr.to_sym] = new_user_attr[attr.to_sym] unless new_user_attr[attr.to_sym].nil?
+      # end
+      begin
+        sm.save
+      rescue
+        puts "Exception! sm=#{row.inspect}"
+        puts "All error messages: #{sm.errors.full_messages.join(', ')}" unless sm.nil?
+      end
+      # puts "user = #{user.inspect}"
+    end
+  end
+end
+
+
 =begin
       0:  [Language Code                    ] = en_US
       1:  [Sid                              ] = 300-006-401_a02_elccnt_0.pdf
@@ -790,6 +855,7 @@ Asset.destroy_all
 TopTag.destroy_all
 Bookmark.destroy_all
 Site.destroy_all
+SiteMessage.destroy_all
 ServiceRequest.destroy_all
 ServiceRequestReadflag.destroy_all
 Note.destroy_all
@@ -800,6 +866,7 @@ Seeding.load_tags "db/data/tags.csv"
 Seeding.load_assets "db/data/assets.csv"
 Seeding.load_bookmarks "db/data/bookmarks.csv"
 Seeding.load_sites "db/data/sites.csv"
+Seeding.load_site_messages "db/data/site_messages.csv"
 Seeding.load_service_requests "db/data/service_requests.csv"
 Seeding.load_notes "db/data/notes.csv"
 

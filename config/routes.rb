@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :forces
+
   map.resources :subscriptions
   map.resources :myinbox
 

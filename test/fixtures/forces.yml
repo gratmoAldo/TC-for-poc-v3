@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  authorization: MyString
+  serverBase: MyString
+
+two:
+  authorization: MyString
+  serverBase: MyString

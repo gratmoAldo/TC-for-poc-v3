@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110924180527) do
+ActiveRecord::Schema.define(:version => 20111018003219) do
 
   create_table "admins", :force => true do |t|
     t.string   "key"
@@ -150,6 +150,13 @@ ActiveRecord::Schema.define(:version => 20110924180527) do
     t.datetime "updated_at"
   end
 
+  create_table "forces", :force => true do |t|
+    t.string   "authorization"
+    t.string   "serverBase"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "inbox_srs", :force => true do |t|
     t.integer "inbox_id"
     t.integer "service_request_id"
@@ -202,6 +209,7 @@ ActiveRecord::Schema.define(:version => 20110924180527) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "closed_at"
+    t.string   "serial"
   end
 
   create_table "site_messages", :force => true do |t|

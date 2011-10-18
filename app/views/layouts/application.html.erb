@@ -46,8 +46,15 @@
 						<%= link_to_unless_current "Notes", notes_path %>
 					</li>
 					<li>
+						<%= link_to_unless_current "Messages", site_messages_path %>
+					</li>
+					<li>
 						<%= link_to_unless_current "Console", console_path %>
 					</li>
+					<li>
+						<%= link_to_unless_current "Force.com", force_path(1) %>
+					</li>
+					
 					<li>
 						<%= link_to_unless_current "Reset", reset_path %>
 					</li>

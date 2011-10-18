@@ -1,0 +1,6 @@
+site_id,expires_at,created_by,status,message_function,created_at,body
+4255,12/16/2011 19:28,sameer,I,RxS,2/16/2009 19:28,"Please note that it is not possible or Resync R2:1B44<R1:13AC, R2:1B52<R1:13BA, R2:1B60<R1:13C8 at the moment for the HS removal due to migration."
+4255,12/11/2012 10:03,radjesh,P,RxS,6/11/2009 10:03,"During the migration it is no possible to remove the HS or resync R2:1B44<R1:13AC, R2:1B52<R1:13BA, R2:1B60<R1:13C8."
+4255,12/11/2012 10:04,radjesh,P,CE,6/11/2009 10:04,"How to find the Satisphere Mgt Station and EConsole Goto Maschinen Raum 1, Location : L12;60 Server  N9620M91, Press little green Button Pull out Keyboard and Video Press 'D' then select 'x335 Server' Login: 'eccadmin' password secret"" Domain: 'This Computer'"""
+4255,12/30/2012 10:04,herve,P,CE,11/15/2006 10:04,no s.w. maint on bin J2810 as of 7/31/96.
+4255,12/30/2012 10:04,herve,P,Triage,11/15/2006 10:04,no s.w. maint on bin J2810 as of 7/31/96.

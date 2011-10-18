@@ -1,0 +1,26 @@
+<% title "Force.com Sessions" %>
+<div class='first-pane'>
+	<h1>Listing Force.com Sessions</h1>
+</div>
+<div class='pane'>
+
+<table>
+  <tr>
+    <th>Authorization</th>
+    <th>Serverbase</th>
+  </tr>
+
+<% @forces.each do |force| %>
+  <tr>
+    <td><%=h force.authorization %></td>
+    <td><%=h force.serverBase %></td>
+    <td><%= link_to 'Show', force %></td>
+    <td><%= link_to 'Edit', edit_force_path(force) %></td>
+    <td><%= link_to 'Destroy', force, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<br/>
+<%= link_to 'New force', new_force_path %>
+</div>
+

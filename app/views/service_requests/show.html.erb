@@ -21,7 +21,7 @@
 					<tr>
 						<td align='right' width='120px'><%= f.label :severity %></td>
 						<td>
-							<div class='sr-col1-select'><%= f.select :severity, [['S1 - Critical',1],['S2 - High Priority',2],['S3 - Standard',3],['S4 - Question',4]], :width => '60' %></div>
+							<div class='sr-col1-select'><%= f.select :severity, [['S1 - Critical',1],['S2 - High Priority',2],['S3 - Medium',3],['S4 - Request',4],['S5 - Scheduled Event',5]], :width => '60' %></div>
 						</td>
 					</tr>
 					<tr>
@@ -43,7 +43,8 @@
 					<tr>
 						<td align='right' width='140px'><%= f.label :product %></td>
 						<td align='left' width='310px'>
-							<div class='sr-col2-value'><%= f.select :product, ['Accelor 1.3 SP1','Connect Server 5.3 SP3', 'CME Crayiion 300-A','CME Crayiion 300-B','Connect Server 5.3 SP4','Nayworker 2.3', 'Nayworker 2.4', 'Nayworker 2.5'] %></div>
+							<div class='sr-col2-value'><%= f.select :product, ['Accelor 1.3 SP1','CME Crayiion 300-A', 'CME Crayiion 300-B', 'Connect Server 5.3 SP3', 'Connect Server 5.3 SP4','Nayworker 2.3', 'Nayworker 2.4', 'Nayworker 2.5', 'Webcop 2.0', 'Webcop 3.0', 'Webcop 3.0 SP1'] %></div>
+						    						   
 						</td>
 					</tr>
 					<tr>

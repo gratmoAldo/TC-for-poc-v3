@@ -1,0 +1,23 @@
+<% title "New Force.com Session" %>
+<div class='first-pane'>
+	<h1>New Force.com Session</h1>
+</div>
+<div class='pane'>
+
+<% form_for(@force) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :authorization %> (ex: 00DQ0000000HCfW!AQUAQ...pBd0V.w)<br />
+    <%= f.text_field :authorization %>
+  </p>
+  <p>
+    <%= f.label :serverBase %><br />
+    <%= f.text_field :serverBase %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %> | <%= link_to 'Cancel', forces_path %>	
+  </p>
+<% end %>
+
+</div>

@@ -42,13 +42,23 @@ class InboxSrsController < ApplicationController
   
   def destroy
     myinbox = Inbox.owned_by(current_user).first
-    inbox_sr = InboxSr.find(:first, :conditions => ["id=? and inbox_id=?",params[:id],myinbox])
+    sr = nil
     
+    inbox_sr = InboxSr.find(:first, :conditions => ["id=? and inbox_id=?",params[:id],myinbox])
+
+    # look for the sr only if user is not customer or agent
+    if inbox_sr
+      sr = ServiceRequest.find_by_id inbox_sr[:service_request_id]
+    end
+    
+    if sr.nil? ||sr.contact_id == session[:user_id] || sr.owner_id == session[:user_id]
+      sr = nil
+    end
+
     respond_to do |format|
-      if inbox_sr
+      if inbox_sr && sr
         inbox_sr.destroy
         format.html { 
-          sr = ServiceRequest.find_by_id inbox_sr[:service_request_id]
           flash[:notice] = 'You stopped watching this Service Request.'
           redirect_to sr 
         }
@@ -57,12 +67,11 @@ class InboxSrsController < ApplicationController
         }
       else
         format.html { 
-          sr = ServiceRequest.find_by_id inbox_sr[:service_request_id]
           flash[:error] = 'Cannot unwatch this Service Request'
           redirect_to sr 
         }
         format.json { 
-          render :json => {:error => errors, :status => :unprocessable_entity }, :status => :unprocessable_entity 
+          render :json => {:status => :unprocessable_entity }, :status => :unprocessable_entity 
         }
       end
     end

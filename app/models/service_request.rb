@@ -17,6 +17,14 @@ class ServiceRequest < ActiveRecord::Base
   # belongs_to :escalation
   # after_save :notify_watchers
   
+  validates_inclusion_of :severity, 
+                          :within => 1..5,
+                          :message => "must be between 1 and 5"
+
+  validates_inclusion_of :escalation, 
+                          :within => 0..5,
+                          :message => "must be between 1 and 5"
+  
   named_scope :sort_by_sr_number, {:order => "service_requests.sr_number desc"}
   
   named_scope :with_fulltext, lambda { |keywords| # keywords is an array of keywords
@@ -162,6 +170,7 @@ class ServiceRequest < ActiveRecord::Base
       :severity => self.severity.to_i,
       :escalation => self.escalation.to_i,
       :product => self.product.to_s,
+      :serial => self.serial.to_s,
       :site_name => self.site.name.to_s,
       :site_id => self.site.site_id.to_i,
       :nb_notes => self.notes_count_per_role(options[:role]),
