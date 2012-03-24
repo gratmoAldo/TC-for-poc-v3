@@ -4,11 +4,7 @@ class MyinboxController < ApplicationController
   def index
     logger.info "inside MyinboxController/index - format = #{request[:format]}"
     @myinbox = Inbox.owned_by(current_user).first    
-
-    # logger.info "Gone fishing..."
-    # sleep 5
-    # logger.info "Back"
-
+    
     if @myinbox.nil? then
       respond_to do |format|
         headers["Status"] = "404 Not Found"

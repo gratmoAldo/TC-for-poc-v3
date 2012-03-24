@@ -22,7 +22,7 @@ class InboxSrsController < ApplicationController
           redirect_to sr 
         }
         format.json { 
-          render :json => {}, :status => :created
+          render :json => { :inbox_sr_id => inbox_sr.id }, :status => :created
         }
       else
         errors = inbox_sr.errors.full_messages.join('; ') if inbox_sr

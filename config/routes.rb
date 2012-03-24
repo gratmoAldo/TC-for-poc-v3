@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :authorizations
+
   map.resources :forces
 
   map.resources :subscriptions
@@ -37,9 +39,9 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'sessions', :action => 'new'
   map.resources :sessions
   map.reset 'reset', :controller => 'console', :action => 'reset'
+  map.backup_db 'backup_db', :controller => 'console', :action => 'backup_db'
   map.console 'console', :controller => 'console', :action => 'index'
   map.myinbox 'myinbox', :controller => 'myinbox', :action => 'index'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
 

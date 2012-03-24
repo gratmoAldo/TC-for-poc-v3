@@ -54,4 +54,73 @@ class ConsoleController < ApplicationController
     
     redirect_to root_url    
   end
+  
+  def backup_db
+    # FOR TESTING ONLY
+    # dump_model_csv :class => User, :attribute_list => %w(username role firstname lastname email phone1 phone2 timezone password_hash password_salt reputation locale is_admin is_deleted access_level created_at)
+    dump_model_csv :class => ServiceRequest, :attribute_list => %w(sr_number severity status next_action_at site_id contact_id escalation owner_id created_at closed_at product version serial title description)
+    # dump_model_csv :class => Site, :attribute_list => %w(name address country site_id account_number created_at updated_at)
+    # dump_model_csv :class => Note, :attribute_list => %w(sr_number creator visibility effort_minutes note_type created_at body)
+    flash[:notice] = "The database has been successfully backed up to the file system"
+    redirect_to root_url    
+  end
+    
+  
+
+
+  # =========================================================== dump_model  
+  def dump_model_csv(dump_info)
+    c = dump_info[:class]
+    logger.info "dumping data for class #{c}"
+    attributes = dump_info[:attribute_list]
+
+    if attributes.nil?
+      attributes = ["id"] | c.content_columns.collect(&:name) 
+    end
+
+    items = c.find(:all)
+    fn = "test/fixtures/" + c.to_s.downcase.pluralize + ".csv"
+    f = File.new fn,"w"
+    f.write attributes.join(",") + "\n"
+
+    types = {}
+    for cols in c.columns
+      n = cols.name
+      if attributes.include?(n) then
+        types[n] = cols.type
+      end
+    end 
+
+    #    db_type_all = {}
+
+    for i in items
+      line = []
+      for a in attributes
+        db_type = types[a]
+        #        puts "a=#{a} - db_type = " + db_type.to_s unless db_type_all.include?(db_type)
+        #            db_type_all[db_type] = ""
+        if db_type == :boolean then
+          if i.send(a) == false then
+            value = 0
+          else
+            value = 1
+          end
+        else
+          #            puts "db_type=#{db_type} for #{a.inspect}"
+          if db_type == :datetime then
+            #          2007-07-02 14:15:19.0            
+            
+            value = i.send(a).nil? ? nil : i.send(a).strftime("%Y-%m-%d %H:%M:%S")
+          else
+            value = i.send(a).to_s.gsub(/["]/, '""')
+          end
+        end
+
+        line << value
+      end
+      f.write "\"" + line.join("\",\"") + "\"\n"
+    end
+    f.close
+  end
+  
 end

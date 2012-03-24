@@ -282,7 +282,7 @@ module Seeding
     puts "Loading Service Requests..."
 
 
-    header=nil
+    header = nil
     FasterCSV.foreach(file) do |row|
       if header.nil?
         header = row 
@@ -358,7 +358,7 @@ def self.load_notes(file)
       header.each_with_index do |h,i|
         
         case h
-        when "created_by"
+        when "creator"
           user = User.find_by_username(row[i])
           if user
             new_note_attr["created_by"] = user.id
@@ -849,26 +849,28 @@ C2dm::Notification.destroy_all
 C2dm::Device.destroy_all
 
 # Then clean up data that we will reload
-User.destroy_all
-Tag.destroy_all
-Asset.destroy_all
-TopTag.destroy_all
-Bookmark.destroy_all
-Site.destroy_all
-SiteMessage.destroy_all
-ServiceRequest.destroy_all
-ServiceRequestReadflag.destroy_all
+# User.destroy_all
+# Tag.destroy_all
+# Asset.destroy_all
+# TopTag.destroy_all
+# Bookmark.destroy_all
+# Site.destroy_all
+# SiteMessage.destroy_all
+# ServiceRequest.destroy_all
+# ServiceRequestReadflag.destroy_all
 Note.destroy_all
 
 # reload all data
-Seeding.load_users "db/data/users.csv"
-Seeding.load_tags "db/data/tags.csv"
-Seeding.load_assets "db/data/assets.csv"
-Seeding.load_bookmarks "db/data/bookmarks.csv"
-Seeding.load_sites "db/data/sites.csv"
-Seeding.load_site_messages "db/data/site_messages.csv"
-Seeding.load_service_requests "db/data/service_requests.csv"
-Seeding.load_notes "db/data/notes.csv"
+# Seeding.load_users "db/data/users.csv"
+# Seeding.load_tags "db/data/tags.csv"
+# Seeding.load_assets "db/data/assets.csv"
+# Seeding.load_bookmarks "db/data/bookmarks.csv"
+# Seeding.load_sites "db/data/sites.csv"
+# Seeding.load_site_messages "db/data/site_messages.csv"
+# Seeding.load_service_requests "db/data/service_requests.csv"
+# Seeding.load_notes "db/data/notes.csv"
+Seeding.load_service_requests "test/fixtures/service_requests.csv"
+Seeding.load_notes "test/fixtures/notes.csv"
 
 
 

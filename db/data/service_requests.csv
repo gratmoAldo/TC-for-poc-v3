@@ -1,5 +1,5 @@
 id,sr_number,severity,status,product,created_at,updated_at,next_action_at,site,contact,escalation,owner,serial,title,description
-1,40320146,2,Open - Customer Action Required,Connect Server 5.3 SP4,4/10/2011 11:16,4/27/2011 15:39,4/10/2011 17:17,4255,charlie,0,sameer,,Mysterious mc_deleted_8101becea8005b503 mc_user,"PROBLEM DESCRIPTION:
+1,40320146,2,Open - Cust. Action Req.,Connect Server 5.3 SP4,4/10/2011 11:16,4/27/2011 15:39,4/10/2011 17:17,4255,charlie,0,sameer,,Mysterious mc_deleted_8101becea8005b503 mc_user,"PROBLEM DESCRIPTION:
 ------------------------------------
 Our connect checker picked up several names and locations that point to a user called...
 mc_deleted_8101becea8005b503   (among others)
@@ -38,7 +38,7 @@ ENVIRONMENT INFORMATION
 >
 Product: Connect Server
 Version: 5.3 SP4"
-2,41018446,2,Open - Customer Action Required,CME Crayiion 300-B,4/17/2011 11:58,6/2/2011 15:34,6/2/2011 14:57,4255,charlie,0,sameer,0233-8997-4520-0010-000A,Authentication against LDAP Directory failure,"PROBLEM DESCRIPTION:
+2,41018446,2,Open - Cust. Action Req.,CME Crayiion 300-B,4/17/2011 11:58,6/2/2011 15:34,6/2/2011 14:57,4255,charlie,0,sameer,0233-8997-4520-0010-000A,Authentication against LDAP Directory failure,"PROBLEM DESCRIPTION:
 ------------------------------------
 We have deployed an application were all users validate against LDAP Server (Sun Java System Directory Server 5.2). We have synchronized the users into the connect server.
 There is a 25-40% ""Authentication Failed"" responses.
@@ -67,7 +67,7 @@ Database Version: 10.2.0.4
 Web Server: 0
 Application Server: BEAWL
 Client UI: 0"
-3,40289104,3,Open - Customer Action Required,Nayworker 2.3,4/13/2011 10:49,4/18/2011 20:21,4/13/2011 10:45,4255,charlie,0,mark,,Users unable to access documents in Nayworker 2.3 ,"PROBLEM DESCRIPTION:
+3,40289104,3,Open - Cust. Action Req.,Nayworker 2.3,4/13/2011 10:49,4/18/2011 20:21,4/13/2011 10:45,4255,charlie,0,mark,,Users unable to access documents in Nayworker 2.3 ,"PROBLEM DESCRIPTION:
 ------------------------------------
 When users in our Tokyo office attempt to access data in Nayworker, they receive a 'Message Viewer: Nayviewer succeeded' screen, but are never able to open the document. Users are able to successfully export and view documents, the issue only arises when attempting to open the document from the application.
 
@@ -81,7 +81,7 @@ ENVIRONMENT INFORMATION
 Product: Nayworker
 Version: 5.3 SP2
 "
-4,40987654,4,Open - Customer Action Required,Connect Server 5.3 SP4,4/14/2011 11:17,4/27/2011 15:34,4/14/2011 11:16,4255,charlie,0,sameer,,How to disable caching in development server?,"PROBLEM DESCRIPTION:
+4,40987654,4,Open - Cust. Action Req.,Connect Server 5.3 SP4,4/14/2011 11:17,4/27/2011 15:34,4/14/2011 11:16,4255,charlie,0,sameer,,How to disable caching in development server?,"PROBLEM DESCRIPTION:
 ------------------------------------
 We are testing custom workflow and would like to disable the global cache. There is no such option in the Administrator or any mention in the documentation.
 

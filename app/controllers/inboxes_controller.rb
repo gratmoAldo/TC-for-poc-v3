@@ -9,14 +9,6 @@ class InboxesController < ApplicationController
   def index
     @inboxes = Inbox.active
     
-    # logger.info "Gone finshing..."
-    # sleep 3
-    # logger.info "I'm back!"
-    
-    # logger.info "Arming the notification"
-    # device = APN::Device.first
-    # notification = APN::Notification.create(:device=>device, :badge=>5, :sound=>true, :alert=>"Do you copy? Sent #{DateTime.now}", :custom_properties=>{:sr_number=>34567})
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @inboxes }

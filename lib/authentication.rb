@@ -43,6 +43,8 @@ module Authentication
   end
 
   def authenticate_from_request!
+    
+    # sleep 10
     # logger.info "inside authenticate_from_request! with request=#{request.inspect}"
     case request.format
     when Mime::XML, Mime::JSON
@@ -54,6 +56,13 @@ module Authentication
           [i,p]
         }
         logger.info "identifier=#{identifier} vs session[:username]=#{session[:username]}"
+
+        # logger.info "device_name = #{cookies[:device_name]}"
+        cookies.each { |c| logger.info "  cookie: #{c.inspect}"}
+        
+        # TODO test the token
+        cookies[:device_token] ||= "ABCDEFGHIJ"
+        # cookies[:device_token] ||= "1234567890"
         
         if !same_username(identifier)
         # Validate and set new user if you find new credentials
@@ -115,6 +124,28 @@ module Authentication
     logger.info "$$$$$$$$$$$$$$$$$$$$$ session = #{session.inspect}"
     authenticate_from_request!
     logger.info "After authenticate_from_request!. Session = #{session.inspect}"
+    
+    delay = [[params[:delay].to_i, 0].max, 300].min
+    bomb = params[:bomb]
+    locked = params[:locked]
+
+    if delay.to_i > 0
+      logger.info "Gone fishing for #{delay} seconds..."
+      sleep delay
+      logger.info "Back"
+    end
+
+    if locked.to_i > 0
+      logger.info "Simulating Locked Account"
+      # render :json  => {:error => "Server Error"}, :status => "500 Server Error"
+      render :json  => { :error => "Account is locked" }, :status => "403 Forbidden"
+      return
+    end
+    
+    if bomb.to_i > 0
+      render :json  => { :error => "Server Error" }, :status => "500 Server Error"
+      return
+    end
     
     unless logged_in?
       logger.info "login_required() - 401 Unauthorized"

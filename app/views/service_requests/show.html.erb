@@ -43,10 +43,24 @@
 					<tr>
 						<td align='right' width='140px'><%= f.label :product %></td>
 						<td align='left' width='310px'>
-							<div class='sr-col2-value'><%= f.select :product, ['Accelor 1.3 SP1','CME Crayiion 300-A', 'CME Crayiion 300-B', 'Connect Server 5.3 SP3', 'Connect Server 5.3 SP4','Nayworker 2.3', 'Nayworker 2.4', 'Nayworker 2.5', 'Webcop 2.0', 'Webcop 3.0', 'Webcop 3.0 SP1'] %></div>
+							<div class='sr-col2-value'>
+							  <%= f.select :product, ServiceRequest::SR_PRODUCTS %>
+							  <%= f.select :version, ServiceRequest::SR_VERSIONS %>
+							</div>
 						    						   
 						</td>
 					</tr>
+					<% unless @service_request.serial.to_s.blank? %>
+					<tr>
+						<td align='right' width='140px'><%= f.label :serial %></td>
+						<td align='left' width='310px'>
+							<div class='sr-col2-value'>
+								<%= @service_request.serial %>
+							</div>
+						    						   
+						</td>
+					</tr>
+					<% end %>
 					<tr>
 						<td align='right' width='120px' valign='top'>Problem Description:</td>
 						<td>
@@ -88,7 +102,7 @@
 <div class='pane'>
 	<div class='notes'>
 		<div class='sr-line1'>
-			<strong>Notes (<%= @service_request.notes.count %>)</strong>
+				<strong>Notes (<%= @notes.count %>)</strong>
 		</div>
 		<div class='new-note'>
 			<%= render 'notes/note_form', :object => @new_note %>

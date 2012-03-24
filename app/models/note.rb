@@ -27,6 +27,8 @@ class Note < ActiveRecord::Base
   before_save :sanatize_and_clear_read_flags                        
 
   named_scope :recent, lambda { |sr, role|
+    logger.info "named_scope recent with role = #{role}"
+    
     if role == User::ROLE_EMPLOYEE
       # {:conditions => {"notes.service_request_id" => sr}, :order => "notes.created_at DESC", :limit => 10}
       {:conditions => {"notes.service_request_id" => sr}, :order => "notes.created_at DESC"}
@@ -61,6 +63,13 @@ class Note < ActiveRecord::Base
     body.gsub(/[ ]*PROBLEM DESCRIPTION[:\-\s]*|BUSINESS IMPACT[:\-\s]*|ENVIRONMENT INFORMATION[:\-\s]*|(\s)/i,' ').squeeze(' ').strip    
   end
   
+  def sr_number
+    service_request.sr_number
+  end
+  
+  def creator
+    owner.username
+  end
   
   def to_hash(options={})    
     options.reverse_merge! :locale => @locale

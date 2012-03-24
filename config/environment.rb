@@ -27,6 +27,8 @@ Rails::Initializer.run do |config|
   config.gem "apn_on_rails"
   config.gem "gdata"
   config.gem "c2dm_on_rails"
+  
+  # config.gem "aws-ses" #, "~> 0.3.2", :require => 'aws/ses'
   # config.gem "mislav-will_paginate", :lib => "will_paginate", :source => "http://gems.github.com"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
@@ -64,6 +66,12 @@ end
 
 begin
   require 'c2dm_on_rails'
+rescue MissingSourceFile => e
+  puts e.message
+end
+
+begin
+  require 'aws/ses'
 rescue MissingSourceFile => e
   puts e.message
 end

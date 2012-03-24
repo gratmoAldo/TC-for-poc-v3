@@ -8,7 +8,6 @@ class ServiceRequestsController < ApplicationController
   def index
     @service_requests = nil
     @keywords = (params[:search]||'').split(' ')
-
     @service_requests = ServiceRequest.with_fulltext(@keywords).sort_by_sr_number.paginate :page => params[:page], :per_page=>5#, :include => :tags
 
     logger.info "Found #{@service_requests.count} service_requests"
@@ -16,9 +15,6 @@ class ServiceRequestsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { 
-        # FOR TESTING ONLY
-        # dump_model_csv :class => Site, :attribute_list => ["id", "name", "address", "country", "site_id", "account_number", "created_at", "updated_at"]
-
         render :xml => @service_requests 
       }
       format.json  { 
@@ -37,71 +33,11 @@ class ServiceRequestsController < ApplicationController
     end
   end
 
-
-
-
-  # =========================================================== dump_model  
-  def dump_model_csv(dump_info)
-    c = dump_info[:class]
-    attributes = dump_info[:attribute_list]
-
-    if attributes.nil?
-      attributes = ["id"] | c.content_columns.collect(&:name) 
-    end
-
-    items = c.find(:all)
-    fn = "test/fixtures/" + c.to_s.downcase.pluralize + ".csv"
-    f = File.new fn,"w"
-    f.write attributes.join(",") + "\n"
-
-    types = {}
-    for cols in c.columns
-      n = cols.name
-      if attributes.include?(n) then
-        types[n] = cols.type
-      end
-    end 
-
-    #    db_type_all = {}
-
-    for i in items
-      line = []
-      for a in attributes
-        db_type = types[a]
-        #        puts "a=#{a} - db_type = " + db_type.to_s unless db_type_all.include?(db_type)
-        #            db_type_all[db_type] = ""
-        if db_type == :boolean then
-          if i.send(a) == false then
-            value = 0
-          else
-            value = 1
-          end
-        else
-          #            puts "db_type=#{db_type} for #{a.inspect}"
-          if db_type == :datetime then
-            #          2007-07-02 14:15:19.0
-            value = i.send(a).strftime("%Y-%m-%d %H:%M:%S")
-          else
-            value = i.send(a).to_s.gsub(/["]/, '""')
-          end
-        end
-
-        line << value
-      end
-      f.write "\"" + line.join("\",\"") + "\"\n"
-    end
-    f.close
-  end
-
   # GET /service_requests/1
   # GET /service_requests/1.xml
   def show
     @service_request = ServiceRequest.lookup(params[:id])
-
-    # logger.info "Gone fishing..."
-    # sleep 3
-    # logger.info "Back"
-
+    
     if @service_request.nil? then
       respond_to do |format|
         # format.html { render :text => request.user_agent }
@@ -121,13 +57,6 @@ class ServiceRequestsController < ApplicationController
         }
       end
     else
-      @watchers = User.watching_sr @service_request.id
-      myinbox = Inbox.owned_by(current_user).first
-      sr_id = @service_request.id
-      @inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",sr_id,myinbox]) || @service_request.inbox_srs.new(:inbox => myinbox)
-      
-      @notes = Note.recent(@service_request.id, session[:role])
-      @new_note = @service_request.notes.new :created_by => current_user.id, :effort_minutes => 1, :note_type => "Research", :visibility => Note::VISIBILITY_PUBLIC
 
       # create a flag everytime a user accesses the SR details
       @service_request.mark_as_read_by_user(current_user)
@@ -135,7 +64,13 @@ class ServiceRequestsController < ApplicationController
       respond_to do |format|
         # format.html { render :text => request.user_agent }
         format.html {
-          
+          @watchers = User.watching_sr @service_request.id
+          myinbox = Inbox.owned_by(current_user).first
+          sr_id = @service_request.id
+          @inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",sr_id,myinbox]) || @service_request.inbox_srs.new(:inbox => myinbox)
+
+          @notes = Note.recent(@service_request.id, session[:role])
+          @new_note = @service_request.notes.new :created_by => current_user.id, :effort_minutes => 1, :note_type => "Research", :visibility => Note::VISIBILITY_PUBLIC
         }# show.html.erb
         format.mobile #{ render :text => request.user_agent }
         format.xml  { render :xml => @service_request }
@@ -149,8 +84,6 @@ class ServiceRequestsController < ApplicationController
               :environment => ENV["RAILS_ENV"]
             }
           }
-          
-          
           # logger.info "returning JSON response #{res.inspect}"
           render :json => res
           

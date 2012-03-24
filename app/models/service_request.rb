@@ -1,4 +1,9 @@
 class ServiceRequest < ActiveRecord::Base
+  SR_HANDLING = ["", "SP", "EH"]
+  SR_STATUSED = ["Open - Await Defect Fix", "Open - Await Parts", "Open - Await Reoccurrence", "Open - Await Upgrade date", "Open - Awaiting Other Vendor", "Open - CTI - Real Time", "Open - Cust. Action Req.", "Open - Eng Activity", "Open - Field Activity", "Open - Hibernating", "Open - Problem Re-Creation", "Open - Re-Open", "Open - Relief Await Cust Veri.", "Open - Relief Await Eng", "Open - Relief Await RCA/FA", "Open - Relief Awaiting Field", "Open - Relief Wrk Around Prv'd", "Open - Research", "Open - Scheduling", "Open - Unassigned", "Closed - CHAT", "Closed - Customer Contacted", "Closed - Defect Logged", "Closed - Initial Call", "Closed - No Cust. Validation", "Closed - Remote Change Act", "Closed", "Duplicate SR", "Cancelled"]
+  SR_PRODUCTS = ['Accelor','CME Crayiion 300-A', 'CME Crayiion 300-B', 'Connect Server', 'Nayworker', 'Webcop']
+  SR_VERSIONS = ['', '3.0','3.1', '3.1 SP1', '6.5', '6.6', '6.6 SP3']
+  
   belongs_to :owner, :class_name => 'User', :foreign_key => 'owner_id'
   belongs_to :contact, :class_name => 'User', :foreign_key => 'contact_id'
 
@@ -38,6 +43,7 @@ class ServiceRequest < ActiveRecord::Base
   
   
   def notes_count_per_role(role=User::ROLE_FRIEND)
+    logger.info "notes_count_per_role with role = #{role}"
     if role == User::ROLE_EMPLOYEE
       Note.count :conditions => ["notes.service_request_id = ?", self]
     else
@@ -160,6 +166,7 @@ class ServiceRequest < ActiveRecord::Base
     user_inbox = Inbox.owned_by(options[:user_id]).first
     inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",self,user_inbox])
     inbox_sr_id = inbox_sr.nil? ? 0 : inbox_sr.id
+    logger.info "sr.to_hash with user role = #{options[:role]}"
     
     res = {
       :sr_number => self.sr_number.to_i,
@@ -169,7 +176,9 @@ class ServiceRequest < ActiveRecord::Base
       :title => self.title.to_s,
       :severity => self.severity.to_i,
       :escalation => self.escalation.to_i,
+      :handling => self.handling,
       :product => self.product.to_s,
+      :version => self.version.to_s,
       :serial => self.serial.to_s,
       :site_name => self.site.name.to_s,
       :site_id => self.site.site_id.to_i,
@@ -190,7 +199,8 @@ class ServiceRequest < ActiveRecord::Base
       # :next_action_in_words => how_old((Time.now - self.next_action_at).to_i, :format => :long, :ago => true),
       # :customer => self.site.name, # renamed to site_name
     if options[:format] == :complete
-      res.merge! :problem_description => self.filtered_description,
+      # res.merge! :problem_description => self.filtered_description,
+      res.merge! :problem_description => self.description,
           :site_address => self.site.address.to_s,
           :customer_name => self.contact.fullname.to_s,
           :customer_email => self.contact.email.to_s,

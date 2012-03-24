@@ -52,12 +52,15 @@
 						<%= link_to_unless_current "Console", console_path %>
 					</li>
 					<li>
-						<%= link_to_unless_current "Force.com", force_path(1) %>
+						<%= link_to_unless_current "Clear read flags", reset_path %>
 					</li>
-					
 					<li>
-						<%= link_to_unless_current "Reset", reset_path %>
+						<%= link_to_unless_current "Backup DB", backup_db_path %>
 					</li>
+					<!-- <li>
+						<%= link_to_unless_current "Force.com", force_path(1) %>
+					</li> -->
+					
 					<% elsif logged_in? %>
 					<li>
 						<%= link_to_unless_current "My Inbox", myinbox_path %>

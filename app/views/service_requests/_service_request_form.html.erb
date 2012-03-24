@@ -22,12 +22,24 @@
     <%= f.select :escalation, [['not escalated',0],['E1',1],['E2',2],['E3',3],['E4',4],['E5',5]] %>
   </p>
   <p>
+    <%= f.label :handling %><br />
+    <%= f.select :handling, ServiceRequest::SR_HANDLING %>
+  </p>
+  <p>
     <%= f.label :status %><br />
-    <%= f.select :status, ['Open - Customer Action Required', 'Open - Support Researching', 'Closed'] %>
+    <%= f.select :status, ServiceRequest::SR_STATUSED %>
   </p>
   <p>
     <%= f.label :product %><br />
-    <%= f.select :product, ['Accelor 1.3 SP1','CME Crayiion 300-A', 'CME Crayiion 300-B', 'Connect Server 5.3 SP3', 'Connect Server 5.3 SP4','Nayworker 2.3', 'Nayworker 2.4', 'Nayworker 2.5', 'Webcop 2.0', 'Webcop 3.0', 'Webcop 3.0 SP1'] %>
+    <%= f.select :product, ServiceRequest::SR_PRODUCTS %>
+  </p>
+  <p>
+    <%= f.label :version %><br />
+    <%= f.select :version, ServiceRequest::SR_VERSIONS %>
+  </p>
+  <p>
+    <%= f.label :serial %><br />
+    <%= f.text_field :serial %>
   </p>
   <p>
     <%= f.label :next_action_at %><br />

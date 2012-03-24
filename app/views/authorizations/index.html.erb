@@ -1,0 +1,32 @@
+<h1>Listing authorizations</h1>
+
+<table>
+  <tr>
+    <th>Is confirmed</th>
+    <th>Device name</th>
+    <th>User</th>
+    <th>Device token</th>
+    <th>Validation token</th>
+    <th>Activated at</th>
+    <th>Last used at</th>
+  </tr>
+
+<% @authorizations.each do |authorization| %>
+  <tr>
+    <td><%=h authorization.is_confirmed %></td>
+    <td><%=h authorization.device_name %></td>
+    <td><%=h authorization.user_id %></td>
+    <td><%=h authorization.device_token %></td>
+    <td><%=h authorization.validation_token %></td>
+    <td><%=h authorization.activated_at %></td>
+    <td><%=h authorization.last_used_at %></td>
+    <td><%= link_to 'Show', authorization %></td>
+    <td><%= link_to 'Edit', edit_authorization_path(authorization) %></td>
+    <td><%= link_to 'Destroy', authorization, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New authorization', new_authorization_path %>
