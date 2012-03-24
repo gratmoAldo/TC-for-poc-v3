@@ -1,0 +1,129 @@
+sr_number,severity,status,next_action_at,site_id,contact_id,escalation,owner_id,created_at,closed_at,product,version,serial,title,description
+"40320146","2","Open - Cust. Action Req.","2011-04-10 17:17:00","462","991","0","995","2011-04-10 11:16:00","","Connect Server","6.6 SP3","","Mysterious mc_deleted_8101becea8005b503 mc_user","PROBLEM DESCRIPTION:
+------------------------------------
+Our connect checker picked up several names and locations that point to a user called...
+mc_deleted_8101becea8005b503   (among others)
+
+Any ideas on where this user would have originated from?
+
+It does not look like a user that a Administrator would establish on their own.
+(How many people do you know that name users like mc_deleted_8101becea8005b503 ???)
+
+I need to know what process might be establishing this user and applying it as part of some ACL records as well as other system objects so that we can prevent trouble in the future.
+
+Here is part of the checker report...
+Checking for ACLs with non-existent users
+Checking for ACLs with missing mc_acl table entries
+Checking for objects with acl domain set to non-existent user
+
+  WARNING CC-0009: object with r_object_id '0c0146438009c92b' has acl_domain entry of 'dm_deleted_8101becea8005b503' which is not a valid user  (REFERRING TO IRPSStdRevr-1 cabinet)
+  WARNING CC-0009: object with r_object_id '0c0146438009c92c' has acl_domain entry of 'dm_deleted_8101becea8005b501' which is not a valid user   (REFERRING TO PSStdAppr-1 cabinet)
+Rows Returned: 2
+
+Checking for objects that belong to non-existent users
+  WARNING CC-0010: object with r_object_id '0b014643800b91a8' belongs to owner 'dm_deleted_8101becea8006b109' which is not a valid user  (REFERRING TO /System/HomeCabinet/CfsPayImgExecEdit folder object)
+  WARNING CC-0010: object with r_object_id '0c0146438009c92b' belongs to owner 'dm_deleted_8101becea8005b503' which is not a valid user  (REFERRING TO IRPSStdRevr-1 cabinet)
+  WARNING CC-0010: object with r_object_id '0c0146438009c92c' belongs to owner 'dm_deleted_8101becea8005b501' which is not a valid user   (REFERRING TO PSStdAppr-1 cabinet)
+  WARNING CC-0010: object with r_object_id '0b014643800b73fe' belongs to owner 'dm_deleted_8101becea8005b503' which is not a valid user   (REFERRING TO /Resources/PSStdRevr-1 folder)
+Rows Returned: 4
+
+
+
+BUSINESS IMPACT: 
+------------------------------------
+Issues like this tend to cast doubt on the validity of our environment so it is really important that we understand the underlying causes of these inconsistencies
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Connect Server
+Version: 5.3 SP4"
+"41018446","1","Open - Cust. Action Req.","2011-06-02 14:57:00","461","990","0","986","2011-04-17 11:58:00","","CME Crayiion 300-B","","0233-8997-4520-0010-000A","Authentication against LDAP Directory failure","PROBLEM DESCRIPTION:
+------------------------------------
+We have deployed an application were all users validate against LDAP Server (Sun Java System Directory Server 5.2). We have synchronized the users into the connect server.
+There is a 25-40% """"Authentication Failed"""" responses.
+
+We have activated trace authentication at the server level. Please see the attached server.log, for examples of correct and failed athentication scenarios.
+
+
+BUSINESS IMPACT: 
+------------------------------------
+Customer very unhappy.
+Users can't access the application. Other have to attempt several times until they gather access.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: CME Crayiion 300-B
+Version: Model 300-B
+
+>
+Host Name: Prod-dcto1p
+Host OS Vendor:Hewlett Packard
+Host OS: HP-UX
+Host OS Version: 11i v2
+Database: ORACLE
+Database Version: 10.2.0.4
+Web Server: 0
+Application Server: BEAWL
+Client UI: 0"
+"40289104","4","Closed","2011-04-13 10:45:00","461","991","0","987","2011-04-13 10:49:00","","Nayworker 2.3","","","Users unable to access documents in Nayworker 2.3 ","PROBLEM DESCRIPTION:
+------------------------------------
+When users in our Tokyo office attempt to access data in Nayworker, they receive a 'Message Viewer: Nayviewer succeeded' screen, but are never able to open the document. Users are able to successfully export and view documents, the issue only arises when attempting to open the document from the application.
+
+BUSINESS IMPACT: 
+------------------------------------
+Nayworker operating from on Windows Server 2003. The local client machine is operating Windows XP with Japanese set as the primary language. 
+
+ENVIRONMENT INFORMATION
+------------------------------------
+<<Product Information>>  
+Product: Nayworker
+Version: 5.3 SP2
+"
+"40987654","4","Open - Research","2011-04-14 11:16:00","458","991","0","995","2011-04-14 11:17:00","","Accelor","6.5","","How to disable caching in development server?","PROBLEM DESCRIPTION:
+------------------------------------
+We are testing custom workflow and would like to disable the global cache. There is no such option in the Administrator or any mention in the documentation.
+
+BUSINESS IMPACT: 
+------------------------------------
+Must deploy in production on 6/1/2011 and risk of delaying go-live.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Connect Server
+Version: 5.3 SP4
+"
+"40987655","3","Open - Research","2011-04-14 11:17:00","461","991","2","987","2011-04-14 11:18:00","","Accelor","3.1 SP1","","Getting 'nw-9102: DNS error' when configuring new node","Please help. I am configuring a new node and getting an error."
+"40987661","2","Cancelled","2011-04-14 11:18:00","461","993","0","995","2011-04-14 11:19:00","","Accelor","3.0","","Getting errors trying to clone from expired save sets","Problem is impacting our production system and threatening our project time line."
+"40387219","4","Open - Research","2011-04-15 13:18:00","461","991","0","988","2011-04-15 07:03:00","","Accelor","3.0","","Some batches are still pending for export","PROBLEM DESCRIPTION:
+------------------------------------
+Some batches are still pending for export.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Accelor
+Version: 1.3 SP1"
+"40988538","3","Open - Cust. Action Req.","2011-09-28 21:52:00","458","991","0","995","2011-08-29 15:11:00","","CME Crayiion 300-B","","CK200103300285","WIN: system performance is tanking from 7:30-8:00 am and PM each day","ComptrolCentor - Perf Supervisor - Zion"
+"43620084","2","Open - Relief Wrk Around Prv'd","2011-10-07 16:12:00","460","989","0","986","2011-10-04 16:47:00","","CME Crayiion 300-B","","ABC-10022013DC","invokeMethod() failed while calling: onOK","PROBLEM DESCRIPTION:
+------------------------------------
+Folks we are encountering the following error while doing an import or a document check in is what it is called here. I can only provide limited information right now. I've scanned the articles  and files but nothing is completely like what I'm seeing here.
+Error encounterd:
+
+invokeMethod() failed while calling: onOK
+class com.copumentum.web.contentxfer.ucf.UcfSessionManager$ClientException
+
+Thank you for any assistance you can provide.
+
+BUSINESS IMPACT: 
+------------------------------------
+We are running host OS windows XP on the client side and 2003 on the server.
+Running 3.0 Version of Copumentum.
+
+ENVIRONMENT INFORMATION
+------------------------------------
+>
+Product: Webcop
+Version: 3.0"

@@ -57,10 +57,10 @@ class ConsoleController < ApplicationController
   
   def backup_db
     # FOR TESTING ONLY
-    # dump_model_csv :class => User, :attribute_list => %w(username role firstname lastname email phone1 phone2 timezone password_hash password_salt reputation locale is_admin is_deleted access_level created_at)
+    dump_model_csv :class => User, :attribute_list => %w(username role firstname lastname email phone1 phone2 timezone password_hash password_salt reputation locale is_admin is_deleted access_level created_at)
     dump_model_csv :class => ServiceRequest, :attribute_list => %w(sr_number severity status next_action_at site_id contact_id escalation owner_id created_at closed_at product version serial title description)
-    # dump_model_csv :class => Site, :attribute_list => %w(name address country site_id account_number created_at updated_at)
-    # dump_model_csv :class => Note, :attribute_list => %w(sr_number creator visibility effort_minutes note_type created_at body)
+    dump_model_csv :class => Site, :attribute_list => %w(name address country site_id account_number created_at updated_at)
+    dump_model_csv :class => Note, :attribute_list => %w(sr_number creator visibility effort_minutes note_type created_at body)
     flash[:notice] = "The database has been successfully backed up to the file system"
     redirect_to root_url    
   end
