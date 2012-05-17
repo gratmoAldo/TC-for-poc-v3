@@ -856,7 +856,7 @@ C2dm::Device.destroy_all
 # Bookmark.destroy_all
 # Site.destroy_all
 # SiteMessage.destroy_all
-# ServiceRequest.destroy_all
+ServiceRequest.destroy_all
 # ServiceRequestReadflag.destroy_all
 Note.destroy_all
 
@@ -869,7 +869,7 @@ Note.destroy_all
 # Seeding.load_site_messages "db/data/site_messages.csv"
 # Seeding.load_service_requests "db/data/service_requests.csv"
 # Seeding.load_notes "db/data/notes.csv"
-Seeding.load_service_requests "test/fixtures/service_requests.csv"
+Seeding.load_service_requests "test/fixtures/servicerequests.csv"
 Seeding.load_notes "test/fixtures/notes.csv"
 
 

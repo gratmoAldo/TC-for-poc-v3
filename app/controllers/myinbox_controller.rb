@@ -4,6 +4,8 @@ class MyinboxController < ApplicationController
   def index
     logger.info "inside MyinboxController/index - format = #{request[:format]}"
     @myinbox = Inbox.owned_by(current_user).first    
+
+# sleep 3
     
     if @myinbox.nil? then
       respond_to do |format|

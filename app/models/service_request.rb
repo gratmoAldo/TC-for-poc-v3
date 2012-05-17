@@ -116,7 +116,14 @@ class ServiceRequest < ActiveRecord::Base
     "E#{escalation}" # TODO should look into related object instead of using the id
   end
 
-  def queue(q)
+  def watch(user)
+    myinbox = Inbox.owned_by(user).first
+    inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",self,myinbox])
+    
+    logger.info "Found inbox_sr #{inbox_sr.inspect} for sr id #{self.id} and myinbox #{myinbox.inspect}"
+    unless inbox_sr
+      inbox_sr = InboxSr.create(:service_request => self, :inbox => myinbox)
+    end
     
   end
 
@@ -158,6 +165,18 @@ class ServiceRequest < ActiveRecord::Base
      [self.owner_id, self.contact_id].include? user_id
   end
 
+  def is_customer(user)
+    # logger.info "contact_id = #{self.contact_id} vs user.id = #{user.inspect}"
+    self.contact_id == user
+  end
+
+  def is_agent(user)
+    self.owner_id == user
+  end
+
+
+
+
   def to_hash(options={})    
     options.reverse_merge! :role => User::ROLE_FRIEND, :user_id => 0, :format => :summary
     
@@ -189,8 +208,8 @@ class ServiceRequest < ActiveRecord::Base
       :created_at => self.created_at.to_i,
       :closed_at => self.closed_at.to_i,
       
-      :is_customer => self.contact_id == options[:user_id],
-      :is_agent => self.owner_id == options[:user_id],
+      :is_customer => self.is_customer(options[:user_id]),
+      :is_agent => self.is_agent(options[:user_id]),
       :is_read => self.is_read_by_user(options[:user_id])
     }
 

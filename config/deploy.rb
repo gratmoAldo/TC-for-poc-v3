@@ -10,7 +10,7 @@ set :user, "ubuntu"
 set :deploy_to, "/home/ubuntu/rails/#{application}"
 set :deploy_via, :remote_cache
 # set :use_sudo, false
-ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "here")] 
+ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "rails1key.pem")] 
 
 # :scm = `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :scm, :git
@@ -27,7 +27,12 @@ set :rails_env, :production
 
 # server "innovation1.dctmlabs.com", :app, :web, :db, :primary => true
 # server "hl400.local", :app, :web, :db, :primary => true
-server "ec2-50-17-158-115.compute-1.amazonaws.com", :app, :web, :db, :primary => true
+
+# --- Server ec2-1 ---
+# server "ec2-50-17-158-115.compute-1.amazonaws.com", :app, :web, :db, :primary => true
+
+# --- Server ec2-2 ---
+server "ec2-184-73-107-2.compute-1.amazonaws.com", :app, :web, :db, :primary => true
 
 # If you are using Passenger mod_rails uncomment this:
 # if you're still using the script/reapear helper you will need

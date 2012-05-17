@@ -6,15 +6,17 @@ class InboxSrsController < ApplicationController
   # end
   
   def create
-    myinbox = Inbox.owned_by(current_user).first
+    # myinbox = Inbox.owned_by(current_user).first
     sr = ServiceRequest.find_by_id params[:inbox_sr][:service_request_id]
-    inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",sr,myinbox])
+    # inbox_sr = InboxSr.find(:first, :conditions => ["service_request_id=? and inbox_id=?",sr,myinbox])
+    # 
+    # logger.info "Found inbox_sr #{inbox_sr.inspect} for sr id#{sr.inspect} and myinbox #{myinbox.inspect}"
+    # unless inbox_sr
+    #   inbox_sr = InboxSr.create(:service_request => sr, :inbox => myinbox)
+    # end
+
+    inbox_sr = sr.watch(current_user)
     
-    logger.info "Found inbox_sr #{inbox_sr.inspect} for sr id#{sr.inspect} and myinbox #{myinbox.inspect}"
-    unless inbox_sr
-      inbox_sr = InboxSr.create(:service_request => sr, :inbox => myinbox)
-    end
-        
     respond_to do |format|
       if inbox_sr.valid?
         format.html { 
