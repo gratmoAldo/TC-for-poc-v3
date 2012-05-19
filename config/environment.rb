@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "fastercsv"
   config.gem "will_paginate"  
-  config.gem "apn_on_rails"
+  config.gem "apn_on_rails", :version => "0.4.2"
   config.gem "gdata"
   config.gem "c2dm_on_rails"
   

@@ -53,6 +53,10 @@ namespace :deploy do
 #    run "ln -nfs #{shared_path}/config/apple_push_notification_development.pem #{release_path}/config/apple_push_notification_development.pem"
     run "ln -nfs #{shared_path}/config/apple_push_notification_production.pem #{release_path}/config/apple_push_notification_production.pem"
   end
+  task :permission do
+    # deploy:setup creates diretories as root, need to chown to deployment user
+    run "#{try_sudo} chown -R #{user} #{deploy_to}"
+  end
   task :seed, :roles => :app, :except => { :no_release => true } do
     run "export RAILS_ENV=production;cd #{current_path}; rake db:seed --trace"
     # run "export RAILS_ENV=production;cd #{current_path};echo $RAILS_ENV >env.txt"
@@ -61,3 +65,4 @@ end
 
 after "deploy", "deploy:cleanup" # keeps only last 5 releases
 after 'deploy:update_code', "deploy:symlink_shared"
+after 'deploy:setup', "deploy:permission"
